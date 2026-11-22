@@ -1,0 +1,6 @@
+port,area,opening_week,eligible_reference
+P1,A,5,false
+P2,A,5,false
+P3,B,,true
+P4,C,,true
+P5,D,,true

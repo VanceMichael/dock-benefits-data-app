@@ -1,0 +1,5 @@
+claim,operator,period,evidence_loss,amount,state,updated_week
+C1,V2,2,420,300,paid,6
+C2,V3,2,380,260,requested,7
+C3,V4,2,0,0,unverified,7
+C4,V5,2,390,280,requested,7

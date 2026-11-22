@@ -1,0 +1,6 @@
+event,operator,household,from_port,to_port,effective_week,verified_week
+M1,V2,F1,P1,P2,5,7
+M2,V3,F1,P2,P2,1,7
+M3,V4,F2,P3,P3,1,2
+M4,V5,F3,P4,P4,1,2
+M5,V6,F4,P5,P5,1,2
