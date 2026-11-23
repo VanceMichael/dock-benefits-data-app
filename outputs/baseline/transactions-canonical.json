@@ -1,0 +1,1569 @@
+{
+  "sales": [
+    {
+      "receipt": "R110",
+      "mergedReceipts": [
+        "R110"
+      ],
+      "lot": "L110",
+      "operator": "V2",
+      "port": "P1",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 194,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R111",
+      "mergedReceipts": [
+        "R111"
+      ],
+      "lot": "L111",
+      "operator": "V2",
+      "port": "P1",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 323,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R112",
+      "mergedReceipts": [
+        "R112"
+      ],
+      "lot": "L112",
+      "operator": "V2",
+      "port": "P1",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 289,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R120",
+      "mergedReceipts": [
+        "R120"
+      ],
+      "lot": "L120",
+      "operator": "V2",
+      "port": "P1",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 284,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R121",
+      "mergedReceipts": [
+        "R121"
+      ],
+      "lot": "L121",
+      "operator": "V2",
+      "port": "P1",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 186,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R122",
+      "mergedReceipts": [
+        "R122"
+      ],
+      "lot": "L122",
+      "operator": "V2",
+      "port": "P1",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 215,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R130",
+      "mergedReceipts": [
+        "R130"
+      ],
+      "lot": "L130",
+      "operator": "V2",
+      "port": "P1",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 321,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R131",
+      "mergedReceipts": [
+        "R131"
+      ],
+      "lot": "L131",
+      "operator": "V2",
+      "port": "P1",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 270,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R132",
+      "mergedReceipts": [
+        "R132"
+      ],
+      "lot": "L132",
+      "operator": "V2",
+      "port": "P1",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 253,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R140",
+      "mergedReceipts": [
+        "R140"
+      ],
+      "lot": "L140",
+      "operator": "V2",
+      "port": "P1",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 227,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R141",
+      "mergedReceipts": [
+        "R141"
+      ],
+      "lot": "L141",
+      "operator": "V2",
+      "port": "P1",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 303,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R142",
+      "mergedReceipts": [
+        "R142"
+      ],
+      "lot": "L142",
+      "operator": "V2",
+      "port": "P1",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 244,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R150",
+      "mergedReceipts": [
+        "R150"
+      ],
+      "lot": "L150",
+      "operator": "V2",
+      "port": "P1",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 268,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R151",
+      "mergedReceipts": [
+        "R151"
+      ],
+      "lot": "L151",
+      "operator": "V2",
+      "port": "P1",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 363,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R152",
+      "mergedReceipts": [
+        "R152"
+      ],
+      "lot": "L152",
+      "operator": "V2",
+      "port": "P1",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 354,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R160",
+      "mergedReceipts": [
+        "R160"
+      ],
+      "lot": "L160",
+      "operator": "V2",
+      "port": "P1",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 262,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R161",
+      "mergedReceipts": [
+        "R161"
+      ],
+      "lot": "L161",
+      "operator": "V2",
+      "port": "P1",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 251,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R162",
+      "mergedReceipts": [
+        "R162"
+      ],
+      "lot": "L162",
+      "operator": "V2",
+      "port": "P1",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 242,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R170",
+      "mergedReceipts": [
+        "R170"
+      ],
+      "lot": "L170",
+      "operator": "V2",
+      "port": "P1",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 332,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R171",
+      "mergedReceipts": [
+        "R171"
+      ],
+      "lot": "L171",
+      "operator": "V2",
+      "port": "P1",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 295,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R172",
+      "mergedReceipts": [
+        "R172"
+      ],
+      "lot": "L172",
+      "operator": "V2",
+      "port": "P1",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 337,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R180",
+      "mergedReceipts": [
+        "R180"
+      ],
+      "lot": "L180",
+      "operator": "V2",
+      "port": "P1",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 326,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R181",
+      "mergedReceipts": [
+        "R181"
+      ],
+      "lot": "L181",
+      "operator": "V2",
+      "port": "P1",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 398,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R182",
+      "mergedReceipts": [
+        "R182"
+      ],
+      "lot": "L182",
+      "operator": "V2",
+      "port": "P1",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 284,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R250",
+      "mergedReceipts": [
+        "R250"
+      ],
+      "lot": "L250",
+      "operator": "V3",
+      "port": "P2",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 287,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R251",
+      "mergedReceipts": [
+        "R251"
+      ],
+      "lot": "L251",
+      "operator": "V3",
+      "port": "P2",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 241,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R252",
+      "mergedReceipts": [
+        "R252"
+      ],
+      "lot": "L252",
+      "operator": "V3",
+      "port": "P2",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 347,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R260",
+      "mergedReceipts": [
+        "R260"
+      ],
+      "lot": "L260",
+      "operator": "V3",
+      "port": "P2",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 315,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R261",
+      "mergedReceipts": [
+        "R261"
+      ],
+      "lot": "L261",
+      "operator": "V3",
+      "port": "P2",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 265,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R262",
+      "mergedReceipts": [
+        "R262"
+      ],
+      "lot": "L262",
+      "operator": "V3",
+      "port": "P2",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 287,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R270",
+      "mergedReceipts": [
+        "R270"
+      ],
+      "lot": "L270",
+      "operator": "V3",
+      "port": "P2",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 264,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R271",
+      "mergedReceipts": [
+        "R271"
+      ],
+      "lot": "L271",
+      "operator": "V3",
+      "port": "P2",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 357,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R272",
+      "mergedReceipts": [
+        "R272"
+      ],
+      "lot": "L272",
+      "operator": "V3",
+      "port": "P2",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 383,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R280",
+      "mergedReceipts": [
+        "R280"
+      ],
+      "lot": "L280",
+      "operator": "V3",
+      "port": "P2",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 283,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R281",
+      "mergedReceipts": [
+        "R281"
+      ],
+      "lot": "L281",
+      "operator": "V3",
+      "port": "P2",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 343,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R282",
+      "mergedReceipts": [
+        "R282"
+      ],
+      "lot": "L282",
+      "operator": "V3",
+      "port": "P2",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 388,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R310",
+      "mergedReceipts": [
+        "R310"
+      ],
+      "lot": "L310",
+      "operator": "V4",
+      "port": "P3",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 176,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R311",
+      "mergedReceipts": [
+        "R311"
+      ],
+      "lot": "L311",
+      "operator": "V4",
+      "port": "P3",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 184,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R312",
+      "mergedReceipts": [
+        "R312"
+      ],
+      "lot": "L312",
+      "operator": "V4",
+      "port": "P3",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 165,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R320",
+      "mergedReceipts": [
+        "R320"
+      ],
+      "lot": "L320",
+      "operator": "V4",
+      "port": "P3",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 254,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R321",
+      "mergedReceipts": [
+        "R321"
+      ],
+      "lot": "L321",
+      "operator": "V4",
+      "port": "P3",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 202,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R322",
+      "mergedReceipts": [
+        "R322"
+      ],
+      "lot": "L322",
+      "operator": "V4",
+      "port": "P3",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 244,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R330",
+      "mergedReceipts": [
+        "R330"
+      ],
+      "lot": "L330",
+      "operator": "V4",
+      "port": "P3",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 184,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R331",
+      "mergedReceipts": [
+        "R331"
+      ],
+      "lot": "L331",
+      "operator": "V4",
+      "port": "P3",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 223,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R332",
+      "mergedReceipts": [
+        "R332"
+      ],
+      "lot": "L332",
+      "operator": "V4",
+      "port": "P3",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 239,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R340",
+      "mergedReceipts": [
+        "R340"
+      ],
+      "lot": "L340",
+      "operator": "V4",
+      "port": "P3",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 327,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R341",
+      "mergedReceipts": [
+        "R341"
+      ],
+      "lot": "L341",
+      "operator": "V4",
+      "port": "P3",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 184,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R342",
+      "mergedReceipts": [
+        "R342"
+      ],
+      "lot": "L342",
+      "operator": "V4",
+      "port": "P3",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 317,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R350",
+      "mergedReceipts": [
+        "R350"
+      ],
+      "lot": "L350",
+      "operator": "V4",
+      "port": "P3",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 256,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R351",
+      "mergedReceipts": [
+        "R351"
+      ],
+      "lot": "L351",
+      "operator": "V4",
+      "port": "P3",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 323,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R352",
+      "mergedReceipts": [
+        "R352"
+      ],
+      "lot": "L352",
+      "operator": "V4",
+      "port": "P3",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 318,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R360",
+      "mergedReceipts": [
+        "R360"
+      ],
+      "lot": "L360",
+      "operator": "V4",
+      "port": "P3",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 261,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R361",
+      "mergedReceipts": [
+        "R361"
+      ],
+      "lot": "L361",
+      "operator": "V4",
+      "port": "P3",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 354,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R362",
+      "mergedReceipts": [
+        "R362"
+      ],
+      "lot": "L362",
+      "operator": "V4",
+      "port": "P3",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 330,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R370",
+      "mergedReceipts": [
+        "R370"
+      ],
+      "lot": "L370",
+      "operator": "V4",
+      "port": "P3",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 297,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R371",
+      "mergedReceipts": [
+        "R371"
+      ],
+      "lot": "L371",
+      "operator": "V4",
+      "port": "P3",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 222,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R372",
+      "mergedReceipts": [
+        "R372"
+      ],
+      "lot": "L372",
+      "operator": "V4",
+      "port": "P3",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 275,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R380",
+      "mergedReceipts": [
+        "R380"
+      ],
+      "lot": "L380",
+      "operator": "V4",
+      "port": "P3",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 363,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R381",
+      "mergedReceipts": [
+        "R381"
+      ],
+      "lot": "L381",
+      "operator": "V4",
+      "port": "P3",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 266,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R382",
+      "mergedReceipts": [
+        "R382"
+      ],
+      "lot": "L382",
+      "operator": "V4",
+      "port": "P3",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 301,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R410",
+      "mergedReceipts": [
+        "R410"
+      ],
+      "lot": "L410",
+      "operator": "V5",
+      "port": "P4",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 247,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R411",
+      "mergedReceipts": [
+        "R411"
+      ],
+      "lot": "L411",
+      "operator": "V5",
+      "port": "P4",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 181,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R412",
+      "mergedReceipts": [
+        "R412"
+      ],
+      "lot": "L412",
+      "operator": "V5",
+      "port": "P4",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 179,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R420",
+      "mergedReceipts": [
+        "R420"
+      ],
+      "lot": "L420",
+      "operator": "V5",
+      "port": "P4",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 213,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R421",
+      "mergedReceipts": [
+        "R421"
+      ],
+      "lot": "L421",
+      "operator": "V5",
+      "port": "P4",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 253,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R422",
+      "mergedReceipts": [
+        "R422"
+      ],
+      "lot": "L422",
+      "operator": "V5",
+      "port": "P4",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 196,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R430",
+      "mergedReceipts": [
+        "R430"
+      ],
+      "lot": "L430",
+      "operator": "V5",
+      "port": "P4",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 240,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R431",
+      "mergedReceipts": [
+        "R431"
+      ],
+      "lot": "L431",
+      "operator": "V5",
+      "port": "P4",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 319,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R432",
+      "mergedReceipts": [
+        "R432"
+      ],
+      "lot": "L432",
+      "operator": "V5",
+      "port": "P4",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 239,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R440",
+      "mergedReceipts": [
+        "R440"
+      ],
+      "lot": "L440",
+      "operator": "V5",
+      "port": "P4",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 180,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R441",
+      "mergedReceipts": [
+        "R441"
+      ],
+      "lot": "L441",
+      "operator": "V5",
+      "port": "P4",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 225,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R442",
+      "mergedReceipts": [
+        "R442"
+      ],
+      "lot": "L442",
+      "operator": "V5",
+      "port": "P4",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 290,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R450",
+      "mergedReceipts": [
+        "R450"
+      ],
+      "lot": "L450",
+      "operator": "V5",
+      "port": "P4",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 349,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R451",
+      "mergedReceipts": [
+        "R451"
+      ],
+      "lot": "L451",
+      "operator": "V5",
+      "port": "P4",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 187,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R452",
+      "mergedReceipts": [
+        "R452"
+      ],
+      "lot": "L452",
+      "operator": "V5",
+      "port": "P4",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 241,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R460",
+      "mergedReceipts": [
+        "R460"
+      ],
+      "lot": "L460",
+      "operator": "V5",
+      "port": "P4",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 327,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R461",
+      "mergedReceipts": [
+        "R461"
+      ],
+      "lot": "L461",
+      "operator": "V5",
+      "port": "P4",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 229,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R462",
+      "mergedReceipts": [
+        "R462"
+      ],
+      "lot": "L462",
+      "operator": "V5",
+      "port": "P4",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 341,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R480",
+      "mergedReceipts": [
+        "R480"
+      ],
+      "lot": "L480",
+      "operator": "V5",
+      "port": "P4",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 312,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R481",
+      "mergedReceipts": [
+        "R481"
+      ],
+      "lot": "L481",
+      "operator": "V5",
+      "port": "P4",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 351,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R482",
+      "mergedReceipts": [
+        "R482"
+      ],
+      "lot": "L482",
+      "operator": "V5",
+      "port": "P4",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 343,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R510",
+      "mergedReceipts": [
+        "R510"
+      ],
+      "lot": "L510",
+      "operator": "V6",
+      "port": "P5",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 174,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R511",
+      "mergedReceipts": [
+        "R511"
+      ],
+      "lot": "L511",
+      "operator": "V6",
+      "port": "P5",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 228,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R512",
+      "mergedReceipts": [
+        "R512"
+      ],
+      "lot": "L512",
+      "operator": "V6",
+      "port": "P5",
+      "week": 1,
+      "buyer": "visitor",
+      "amount": 264,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R520",
+      "mergedReceipts": [
+        "R520"
+      ],
+      "lot": "L520",
+      "operator": "V6",
+      "port": "P5",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 297,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R521",
+      "mergedReceipts": [
+        "R521"
+      ],
+      "lot": "L521",
+      "operator": "V6",
+      "port": "P5",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 181,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R522",
+      "mergedReceipts": [
+        "R522"
+      ],
+      "lot": "L522",
+      "operator": "V6",
+      "port": "P5",
+      "week": 2,
+      "buyer": "visitor",
+      "amount": 293,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R530",
+      "mergedReceipts": [
+        "R530"
+      ],
+      "lot": "L530",
+      "operator": "V6",
+      "port": "P5",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 313,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R531",
+      "mergedReceipts": [
+        "R531"
+      ],
+      "lot": "L531",
+      "operator": "V6",
+      "port": "P5",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 218,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R532",
+      "mergedReceipts": [
+        "R532"
+      ],
+      "lot": "L532",
+      "operator": "V6",
+      "port": "P5",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 287,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R540",
+      "mergedReceipts": [
+        "R540"
+      ],
+      "lot": "L540",
+      "operator": "V6",
+      "port": "P5",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 238,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R541",
+      "mergedReceipts": [
+        "R541"
+      ],
+      "lot": "L541",
+      "operator": "V6",
+      "port": "P5",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 289,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R542",
+      "mergedReceipts": [
+        "R542"
+      ],
+      "lot": "L542",
+      "operator": "V6",
+      "port": "P5",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 293,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R550",
+      "mergedReceipts": [
+        "R550"
+      ],
+      "lot": "L550",
+      "operator": "V6",
+      "port": "P5",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 253,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R551",
+      "mergedReceipts": [
+        "R551"
+      ],
+      "lot": "L551",
+      "operator": "V6",
+      "port": "P5",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 227,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R552",
+      "mergedReceipts": [
+        "R552"
+      ],
+      "lot": "L552",
+      "operator": "V6",
+      "port": "P5",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 275,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R560",
+      "mergedReceipts": [
+        "R560"
+      ],
+      "lot": "L560",
+      "operator": "V6",
+      "port": "P5",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 296,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R561",
+      "mergedReceipts": [
+        "R561"
+      ],
+      "lot": "L561",
+      "operator": "V6",
+      "port": "P5",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 234,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R562",
+      "mergedReceipts": [
+        "R562"
+      ],
+      "lot": "L562",
+      "operator": "V6",
+      "port": "P5",
+      "week": 6,
+      "buyer": "visitor",
+      "amount": 310,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R570",
+      "mergedReceipts": [
+        "R570"
+      ],
+      "lot": "L570",
+      "operator": "V6",
+      "port": "P5",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 296,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R571",
+      "mergedReceipts": [
+        "R571"
+      ],
+      "lot": "L571",
+      "operator": "V6",
+      "port": "P5",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 225,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R572",
+      "mergedReceipts": [
+        "R572"
+      ],
+      "lot": "L572",
+      "operator": "V6",
+      "port": "P5",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 261,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R580",
+      "mergedReceipts": [
+        "R580"
+      ],
+      "lot": "L580",
+      "operator": "V6",
+      "port": "P5",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 211,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R581",
+      "mergedReceipts": [
+        "R581"
+      ],
+      "lot": "L581",
+      "operator": "V6",
+      "port": "P5",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 284,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "R582",
+      "mergedReceipts": [
+        "R582"
+      ],
+      "lot": "L582",
+      "operator": "V6",
+      "port": "P5",
+      "week": 8,
+      "buyer": "visitor",
+      "amount": 210,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "TX1",
+      "mergedReceipts": [
+        "TX1"
+      ],
+      "lot": "L1",
+      "operator": "V2",
+      "port": "P1",
+      "week": 4,
+      "buyer": "wholesale",
+      "amount": 420,
+      "status": "confirmed",
+      "note": "同货批另有不同 buyer/金额的独立成交，已分别计入"
+    },
+    {
+      "receipt": "TX2",
+      "mergedReceipts": [
+        "TX2"
+      ],
+      "lot": "L1",
+      "operator": "V2",
+      "port": "P1",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 570,
+      "status": "confirmed",
+      "note": "同货批另有不同 buyer/金额的独立成交，已分别计入"
+    },
+    {
+      "receipt": "TX3",
+      "mergedReceipts": [
+        "TX3",
+        "TX4"
+      ],
+      "lot": "L3",
+      "operator": "V3",
+      "port": "P2",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 190,
+      "status": "duplicate",
+      "note": "渠道再报，上报周不同"
+    },
+    {
+      "receipt": "TX5",
+      "mergedReceipts": [
+        "TX5"
+      ],
+      "lot": "L4",
+      "operator": "V4",
+      "port": "P3",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 438,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "TX6",
+      "mergedReceipts": [
+        "TX6"
+      ],
+      "lot": "L5",
+      "operator": "V5",
+      "port": "P4",
+      "week": 5,
+      "buyer": "visitor",
+      "amount": 208,
+      "status": "confirmed",
+      "note": ""
+    },
+    {
+      "receipt": "TX7",
+      "mergedReceipts": [
+        "TX7"
+      ],
+      "lot": "L6",
+      "operator": "V5",
+      "port": "P4",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 197,
+      "status": "confirmed",
+      "note": ""
+    }
+  ],
+  "review": [],
+  "quality": {
+    "原始凭证数": 112,
+    "确认成交数": 111,
+    "渠道再报合并数": 1,
+    "待核记录数": 0,
+    "批发笔数": 1,
+    "游客笔数": 110
+  },
+  "groupCount": 110
+}

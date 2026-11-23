@@ -1,0 +1,3811 @@
+{
+  "caliber": {
+    "generatedAt": "2026-11-23T05:19:29.309Z",
+    "engine": "node:test 管线（仅依赖 Node.js 标准库）",
+    "bootstrapReplications": 2000,
+    "periodWindows": {
+      "pre": {
+        "period": 1,
+        "first": 1,
+        "last": 4
+      },
+      "post": {
+        "period": 2,
+        "first": 5,
+        "last": 8
+      }
+    },
+    "fundParameters": {
+      "period": 2,
+      "total": 650,
+      "perHousehold": 350,
+      "spilloverThreshold": 0.2,
+      "publishMinimum": 3
+    },
+    "definitions": {
+      "渠道再报": "同 lot、同经营户、等额的 dock/online 两条凭证视为同一成交，只计一次",
+      "批发与游客": "wholesale 为入手后再售，visitor 为最终购买；因果与扶持的主口径只用 visitor",
+      "迁摊": "归属按 effective_week，核实日期按 verified_week；迁摊不新增经营户",
+      "分流门槛": "对照港通车后任一周 via_new_bridge/traffic ≥ 0.2 即移出干净对照组",
+      "缺失处理": "not-open/no-report/weather-closed 分别剔除并披露；无观测不以零填充",
+      "扶持排序": "正损失按登记金额降序、申请号升序；paid 先占家庭额度与基金",
+      "发布门槛": "分组可识别主体 < 3 抑制；村与片区同时小样本禁止凑差"
+    },
+    "inputFiles": [
+      {
+        "table": "ports",
+        "bytes": 101,
+        "sha256": "a74ee2dae5eb71e3e0c40eb5ccc7dcd414aa6d7641129e69848d26e98ade5dc0"
+      },
+      {
+        "table": "visits",
+        "bytes": 654,
+        "sha256": "aefa8891b946401705967184adf0b5a63fdc6c17b123aa789dcae636dfae8698"
+      },
+      {
+        "table": "movements",
+        "bytes": 167,
+        "sha256": "dce44b3a4aeb8b1a19ac7d524a123991c657a052f6eec25790ac5ddaca510ee8"
+      },
+      {
+        "table": "transactions",
+        "bytes": 4201,
+        "sha256": "6552b8c4e0a93092eeddebdef8d3ba7b32c8cbabc452ccc26e06b82ce7e50d33"
+      },
+      {
+        "table": "support",
+        "bytes": 166,
+        "sha256": "babc0d5852a3d6192dfbfcaffc5f1efe19de071aed45354dd2f21539c25a7320"
+      },
+      {
+        "table": "fund",
+        "bytes": 80,
+        "sha256": "4eecf8a2a6629b029352f1494084aca74cc6b469d2c832cef987cdec3677a27c"
+      },
+      {
+        "table": "period-weeks",
+        "bytes": 40,
+        "sha256": "c6e6360b437cbe1acc8e698428f23c8d7fbf088d8b98531f5f518a3b7df577db"
+      },
+      {
+        "table": "operator-open",
+        "bytes": 105,
+        "sha256": "d3b5bddb4b6f7ee62be433b2e6598213fccc06f82166c56055d9dc811ec51aa3"
+      }
+    ],
+    "tableHeaders": {
+      "ports": [
+        "port",
+        "area",
+        "opening_week",
+        "eligible_reference"
+      ],
+      "visits": [
+        "port",
+        "week",
+        "via_new_bridge",
+        "traffic",
+        "closure_days",
+        "known_week"
+      ],
+      "movements": [
+        "event",
+        "operator",
+        "household",
+        "from_port",
+        "to_port",
+        "effective_week",
+        "verified_week"
+      ],
+      "transactions": [
+        "receipt",
+        "lot",
+        "operator",
+        "port",
+        "week",
+        "channel",
+        "buyer",
+        "net_amount",
+        "known_week"
+      ],
+      "support": [
+        "claim",
+        "operator",
+        "period",
+        "evidence_loss",
+        "amount",
+        "state",
+        "updated_week"
+      ],
+      "fund": [
+        "period",
+        "total",
+        "per_household",
+        "spillover_threshold",
+        "publish_minimum"
+      ],
+      "period-weeks": [
+        "period",
+        "first_week",
+        "last_week"
+      ],
+      "operator-open": [
+        "operator",
+        "week",
+        "declared",
+        "known_week"
+      ]
+    },
+    "links": [
+      [
+        "visits",
+        "port",
+        "ports",
+        "port"
+      ],
+      [
+        "movements",
+        "from_port",
+        "ports",
+        "port"
+      ],
+      [
+        "movements",
+        "to_port",
+        "ports",
+        "port"
+      ],
+      [
+        "support",
+        "period",
+        "period-weeks",
+        "period"
+      ],
+      [
+        "transactions",
+        "operator",
+        "movements",
+        "operator"
+      ],
+      [
+        "transactions",
+        "port",
+        "ports",
+        "port"
+      ]
+    ]
+  },
+  "periods": {
+    "pre": {
+      "period": 1,
+      "first": 1,
+      "last": 4
+    },
+    "post": {
+      "period": 2,
+      "first": 5,
+      "last": 8
+    }
+  },
+  "fund": {
+    "period": 2,
+    "total": 650,
+    "perHousehold": 350,
+    "spilloverThreshold": 0.2,
+    "publishMinimum": 3
+  },
+  "ports": [
+    {
+      "port": "P1",
+      "area": "A",
+      "opening_week": "5",
+      "eligible_reference": "false",
+      "openingWeek": 5
+    },
+    {
+      "port": "P2",
+      "area": "A",
+      "opening_week": "5",
+      "eligible_reference": "false",
+      "openingWeek": 5
+    },
+    {
+      "port": "P3",
+      "area": "B",
+      "opening_week": "",
+      "eligible_reference": "true",
+      "openingWeek": null
+    },
+    {
+      "port": "P4",
+      "area": "C",
+      "opening_week": "",
+      "eligible_reference": "true",
+      "openingWeek": null
+    },
+    {
+      "port": "P5",
+      "area": "D",
+      "opening_week": "",
+      "eligible_reference": "true",
+      "openingWeek": null
+    }
+  ],
+  "roster": {
+    "operators": [
+      {
+        "operator": "V2",
+        "household": "F1",
+        "basePort": "P1",
+        "currentPort": "P2",
+        "moves": [
+          {
+            "event": "M1",
+            "fromPort": "P1",
+            "toPort": "P2",
+            "effectiveWeek": 5,
+            "verifiedWeek": 7
+          }
+        ]
+      },
+      {
+        "operator": "V3",
+        "household": "F1",
+        "basePort": "P2",
+        "currentPort": "P2",
+        "moves": [
+          {
+            "event": "M2",
+            "fromPort": "P2",
+            "toPort": "P2",
+            "effectiveWeek": 1,
+            "verifiedWeek": 7
+          }
+        ]
+      },
+      {
+        "operator": "V4",
+        "household": "F2",
+        "basePort": "P3",
+        "currentPort": "P3",
+        "moves": [
+          {
+            "event": "M3",
+            "fromPort": "P3",
+            "toPort": "P3",
+            "effectiveWeek": 1,
+            "verifiedWeek": 2
+          }
+        ]
+      },
+      {
+        "operator": "V5",
+        "household": "F3",
+        "basePort": "P4",
+        "currentPort": "P4",
+        "moves": [
+          {
+            "event": "M4",
+            "fromPort": "P4",
+            "toPort": "P4",
+            "effectiveWeek": 1,
+            "verifiedWeek": 2
+          }
+        ]
+      },
+      {
+        "operator": "V6",
+        "household": "F4",
+        "basePort": "P5",
+        "currentPort": "P5",
+        "moves": [
+          {
+            "event": "M5",
+            "fromPort": "P5",
+            "toPort": "P5",
+            "effectiveWeek": 1,
+            "verifiedWeek": 2
+          }
+        ]
+      }
+    ],
+    "households": [
+      {
+        "household": "F1",
+        "operators": [
+          "V2",
+          "V3"
+        ]
+      },
+      {
+        "household": "F2",
+        "operators": [
+          "V4"
+        ]
+      },
+      {
+        "household": "F3",
+        "operators": [
+          "V5"
+        ]
+      },
+      {
+        "household": "F4",
+        "operators": [
+          "V6"
+        ]
+      }
+    ]
+  },
+  "openStatus": [
+    {
+      "operator": "V3",
+      "week": 3,
+      "declared": "open",
+      "knownWeek": 9
+    },
+    {
+      "operator": "V3",
+      "week": 4,
+      "declared": "open",
+      "knownWeek": 9
+    },
+    {
+      "operator": "V5",
+      "week": 7,
+      "declared": "open",
+      "knownWeek": 9
+    },
+    {
+      "operator": "V2",
+      "week": 7,
+      "declared": "weather-closed",
+      "knownWeek": 7
+    }
+  ],
+  "transactions": {
+    "sales": [
+      {
+        "receipt": "R110",
+        "mergedReceipts": [
+          "R110"
+        ],
+        "lot": "L110",
+        "operator": "V2",
+        "port": "P1",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 194,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R111",
+        "mergedReceipts": [
+          "R111"
+        ],
+        "lot": "L111",
+        "operator": "V2",
+        "port": "P1",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 323,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R112",
+        "mergedReceipts": [
+          "R112"
+        ],
+        "lot": "L112",
+        "operator": "V2",
+        "port": "P1",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 289,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R120",
+        "mergedReceipts": [
+          "R120"
+        ],
+        "lot": "L120",
+        "operator": "V2",
+        "port": "P1",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 284,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R121",
+        "mergedReceipts": [
+          "R121"
+        ],
+        "lot": "L121",
+        "operator": "V2",
+        "port": "P1",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 186,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R122",
+        "mergedReceipts": [
+          "R122"
+        ],
+        "lot": "L122",
+        "operator": "V2",
+        "port": "P1",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 215,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R130",
+        "mergedReceipts": [
+          "R130"
+        ],
+        "lot": "L130",
+        "operator": "V2",
+        "port": "P1",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 321,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R131",
+        "mergedReceipts": [
+          "R131"
+        ],
+        "lot": "L131",
+        "operator": "V2",
+        "port": "P1",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 270,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R132",
+        "mergedReceipts": [
+          "R132"
+        ],
+        "lot": "L132",
+        "operator": "V2",
+        "port": "P1",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 253,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R140",
+        "mergedReceipts": [
+          "R140"
+        ],
+        "lot": "L140",
+        "operator": "V2",
+        "port": "P1",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 227,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R141",
+        "mergedReceipts": [
+          "R141"
+        ],
+        "lot": "L141",
+        "operator": "V2",
+        "port": "P1",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 303,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R142",
+        "mergedReceipts": [
+          "R142"
+        ],
+        "lot": "L142",
+        "operator": "V2",
+        "port": "P1",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 244,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R150",
+        "mergedReceipts": [
+          "R150"
+        ],
+        "lot": "L150",
+        "operator": "V2",
+        "port": "P1",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 268,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R151",
+        "mergedReceipts": [
+          "R151"
+        ],
+        "lot": "L151",
+        "operator": "V2",
+        "port": "P1",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 363,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R152",
+        "mergedReceipts": [
+          "R152"
+        ],
+        "lot": "L152",
+        "operator": "V2",
+        "port": "P1",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 354,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R160",
+        "mergedReceipts": [
+          "R160"
+        ],
+        "lot": "L160",
+        "operator": "V2",
+        "port": "P1",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 262,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R161",
+        "mergedReceipts": [
+          "R161"
+        ],
+        "lot": "L161",
+        "operator": "V2",
+        "port": "P1",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 251,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R162",
+        "mergedReceipts": [
+          "R162"
+        ],
+        "lot": "L162",
+        "operator": "V2",
+        "port": "P1",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 242,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R170",
+        "mergedReceipts": [
+          "R170"
+        ],
+        "lot": "L170",
+        "operator": "V2",
+        "port": "P1",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 332,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R171",
+        "mergedReceipts": [
+          "R171"
+        ],
+        "lot": "L171",
+        "operator": "V2",
+        "port": "P1",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 295,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R172",
+        "mergedReceipts": [
+          "R172"
+        ],
+        "lot": "L172",
+        "operator": "V2",
+        "port": "P1",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 337,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R180",
+        "mergedReceipts": [
+          "R180"
+        ],
+        "lot": "L180",
+        "operator": "V2",
+        "port": "P1",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 326,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R181",
+        "mergedReceipts": [
+          "R181"
+        ],
+        "lot": "L181",
+        "operator": "V2",
+        "port": "P1",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 398,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R182",
+        "mergedReceipts": [
+          "R182"
+        ],
+        "lot": "L182",
+        "operator": "V2",
+        "port": "P1",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 284,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R250",
+        "mergedReceipts": [
+          "R250"
+        ],
+        "lot": "L250",
+        "operator": "V3",
+        "port": "P2",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 287,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R251",
+        "mergedReceipts": [
+          "R251"
+        ],
+        "lot": "L251",
+        "operator": "V3",
+        "port": "P2",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 241,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R252",
+        "mergedReceipts": [
+          "R252"
+        ],
+        "lot": "L252",
+        "operator": "V3",
+        "port": "P2",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 347,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R260",
+        "mergedReceipts": [
+          "R260"
+        ],
+        "lot": "L260",
+        "operator": "V3",
+        "port": "P2",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 315,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R261",
+        "mergedReceipts": [
+          "R261"
+        ],
+        "lot": "L261",
+        "operator": "V3",
+        "port": "P2",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 265,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R262",
+        "mergedReceipts": [
+          "R262"
+        ],
+        "lot": "L262",
+        "operator": "V3",
+        "port": "P2",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 287,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R270",
+        "mergedReceipts": [
+          "R270"
+        ],
+        "lot": "L270",
+        "operator": "V3",
+        "port": "P2",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 264,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R271",
+        "mergedReceipts": [
+          "R271"
+        ],
+        "lot": "L271",
+        "operator": "V3",
+        "port": "P2",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 357,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R272",
+        "mergedReceipts": [
+          "R272"
+        ],
+        "lot": "L272",
+        "operator": "V3",
+        "port": "P2",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 383,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R280",
+        "mergedReceipts": [
+          "R280"
+        ],
+        "lot": "L280",
+        "operator": "V3",
+        "port": "P2",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 283,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R281",
+        "mergedReceipts": [
+          "R281"
+        ],
+        "lot": "L281",
+        "operator": "V3",
+        "port": "P2",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 343,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R282",
+        "mergedReceipts": [
+          "R282"
+        ],
+        "lot": "L282",
+        "operator": "V3",
+        "port": "P2",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 388,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R310",
+        "mergedReceipts": [
+          "R310"
+        ],
+        "lot": "L310",
+        "operator": "V4",
+        "port": "P3",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 176,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R311",
+        "mergedReceipts": [
+          "R311"
+        ],
+        "lot": "L311",
+        "operator": "V4",
+        "port": "P3",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 184,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R312",
+        "mergedReceipts": [
+          "R312"
+        ],
+        "lot": "L312",
+        "operator": "V4",
+        "port": "P3",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 165,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R320",
+        "mergedReceipts": [
+          "R320"
+        ],
+        "lot": "L320",
+        "operator": "V4",
+        "port": "P3",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 254,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R321",
+        "mergedReceipts": [
+          "R321"
+        ],
+        "lot": "L321",
+        "operator": "V4",
+        "port": "P3",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 202,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R322",
+        "mergedReceipts": [
+          "R322"
+        ],
+        "lot": "L322",
+        "operator": "V4",
+        "port": "P3",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 244,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R330",
+        "mergedReceipts": [
+          "R330"
+        ],
+        "lot": "L330",
+        "operator": "V4",
+        "port": "P3",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 184,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R331",
+        "mergedReceipts": [
+          "R331"
+        ],
+        "lot": "L331",
+        "operator": "V4",
+        "port": "P3",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 223,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R332",
+        "mergedReceipts": [
+          "R332"
+        ],
+        "lot": "L332",
+        "operator": "V4",
+        "port": "P3",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 239,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R340",
+        "mergedReceipts": [
+          "R340"
+        ],
+        "lot": "L340",
+        "operator": "V4",
+        "port": "P3",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 327,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R341",
+        "mergedReceipts": [
+          "R341"
+        ],
+        "lot": "L341",
+        "operator": "V4",
+        "port": "P3",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 184,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R342",
+        "mergedReceipts": [
+          "R342"
+        ],
+        "lot": "L342",
+        "operator": "V4",
+        "port": "P3",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 317,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R350",
+        "mergedReceipts": [
+          "R350"
+        ],
+        "lot": "L350",
+        "operator": "V4",
+        "port": "P3",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 256,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R351",
+        "mergedReceipts": [
+          "R351"
+        ],
+        "lot": "L351",
+        "operator": "V4",
+        "port": "P3",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 323,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R352",
+        "mergedReceipts": [
+          "R352"
+        ],
+        "lot": "L352",
+        "operator": "V4",
+        "port": "P3",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 318,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R360",
+        "mergedReceipts": [
+          "R360"
+        ],
+        "lot": "L360",
+        "operator": "V4",
+        "port": "P3",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 261,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R361",
+        "mergedReceipts": [
+          "R361"
+        ],
+        "lot": "L361",
+        "operator": "V4",
+        "port": "P3",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 354,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R362",
+        "mergedReceipts": [
+          "R362"
+        ],
+        "lot": "L362",
+        "operator": "V4",
+        "port": "P3",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 330,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R370",
+        "mergedReceipts": [
+          "R370"
+        ],
+        "lot": "L370",
+        "operator": "V4",
+        "port": "P3",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 297,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R371",
+        "mergedReceipts": [
+          "R371"
+        ],
+        "lot": "L371",
+        "operator": "V4",
+        "port": "P3",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 222,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R372",
+        "mergedReceipts": [
+          "R372"
+        ],
+        "lot": "L372",
+        "operator": "V4",
+        "port": "P3",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 275,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R380",
+        "mergedReceipts": [
+          "R380"
+        ],
+        "lot": "L380",
+        "operator": "V4",
+        "port": "P3",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 363,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R381",
+        "mergedReceipts": [
+          "R381"
+        ],
+        "lot": "L381",
+        "operator": "V4",
+        "port": "P3",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 266,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R382",
+        "mergedReceipts": [
+          "R382"
+        ],
+        "lot": "L382",
+        "operator": "V4",
+        "port": "P3",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 301,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R410",
+        "mergedReceipts": [
+          "R410"
+        ],
+        "lot": "L410",
+        "operator": "V5",
+        "port": "P4",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 247,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R411",
+        "mergedReceipts": [
+          "R411"
+        ],
+        "lot": "L411",
+        "operator": "V5",
+        "port": "P4",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 181,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R412",
+        "mergedReceipts": [
+          "R412"
+        ],
+        "lot": "L412",
+        "operator": "V5",
+        "port": "P4",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 179,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R420",
+        "mergedReceipts": [
+          "R420"
+        ],
+        "lot": "L420",
+        "operator": "V5",
+        "port": "P4",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 213,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R421",
+        "mergedReceipts": [
+          "R421"
+        ],
+        "lot": "L421",
+        "operator": "V5",
+        "port": "P4",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 253,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R422",
+        "mergedReceipts": [
+          "R422"
+        ],
+        "lot": "L422",
+        "operator": "V5",
+        "port": "P4",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 196,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R430",
+        "mergedReceipts": [
+          "R430"
+        ],
+        "lot": "L430",
+        "operator": "V5",
+        "port": "P4",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 240,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R431",
+        "mergedReceipts": [
+          "R431"
+        ],
+        "lot": "L431",
+        "operator": "V5",
+        "port": "P4",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 319,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R432",
+        "mergedReceipts": [
+          "R432"
+        ],
+        "lot": "L432",
+        "operator": "V5",
+        "port": "P4",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 239,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R440",
+        "mergedReceipts": [
+          "R440"
+        ],
+        "lot": "L440",
+        "operator": "V5",
+        "port": "P4",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 180,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R441",
+        "mergedReceipts": [
+          "R441"
+        ],
+        "lot": "L441",
+        "operator": "V5",
+        "port": "P4",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 225,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R442",
+        "mergedReceipts": [
+          "R442"
+        ],
+        "lot": "L442",
+        "operator": "V5",
+        "port": "P4",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 290,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R450",
+        "mergedReceipts": [
+          "R450"
+        ],
+        "lot": "L450",
+        "operator": "V5",
+        "port": "P4",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 349,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R451",
+        "mergedReceipts": [
+          "R451"
+        ],
+        "lot": "L451",
+        "operator": "V5",
+        "port": "P4",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 187,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R452",
+        "mergedReceipts": [
+          "R452"
+        ],
+        "lot": "L452",
+        "operator": "V5",
+        "port": "P4",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 241,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R460",
+        "mergedReceipts": [
+          "R460"
+        ],
+        "lot": "L460",
+        "operator": "V5",
+        "port": "P4",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 327,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R461",
+        "mergedReceipts": [
+          "R461"
+        ],
+        "lot": "L461",
+        "operator": "V5",
+        "port": "P4",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 229,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R462",
+        "mergedReceipts": [
+          "R462"
+        ],
+        "lot": "L462",
+        "operator": "V5",
+        "port": "P4",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 341,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R480",
+        "mergedReceipts": [
+          "R480"
+        ],
+        "lot": "L480",
+        "operator": "V5",
+        "port": "P4",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 312,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R481",
+        "mergedReceipts": [
+          "R481"
+        ],
+        "lot": "L481",
+        "operator": "V5",
+        "port": "P4",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 351,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R482",
+        "mergedReceipts": [
+          "R482"
+        ],
+        "lot": "L482",
+        "operator": "V5",
+        "port": "P4",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 343,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R510",
+        "mergedReceipts": [
+          "R510"
+        ],
+        "lot": "L510",
+        "operator": "V6",
+        "port": "P5",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 174,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R511",
+        "mergedReceipts": [
+          "R511"
+        ],
+        "lot": "L511",
+        "operator": "V6",
+        "port": "P5",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 228,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R512",
+        "mergedReceipts": [
+          "R512"
+        ],
+        "lot": "L512",
+        "operator": "V6",
+        "port": "P5",
+        "week": 1,
+        "buyer": "visitor",
+        "amount": 264,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R520",
+        "mergedReceipts": [
+          "R520"
+        ],
+        "lot": "L520",
+        "operator": "V6",
+        "port": "P5",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 297,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R521",
+        "mergedReceipts": [
+          "R521"
+        ],
+        "lot": "L521",
+        "operator": "V6",
+        "port": "P5",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 181,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R522",
+        "mergedReceipts": [
+          "R522"
+        ],
+        "lot": "L522",
+        "operator": "V6",
+        "port": "P5",
+        "week": 2,
+        "buyer": "visitor",
+        "amount": 293,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R530",
+        "mergedReceipts": [
+          "R530"
+        ],
+        "lot": "L530",
+        "operator": "V6",
+        "port": "P5",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 313,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R531",
+        "mergedReceipts": [
+          "R531"
+        ],
+        "lot": "L531",
+        "operator": "V6",
+        "port": "P5",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 218,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R532",
+        "mergedReceipts": [
+          "R532"
+        ],
+        "lot": "L532",
+        "operator": "V6",
+        "port": "P5",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 287,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R540",
+        "mergedReceipts": [
+          "R540"
+        ],
+        "lot": "L540",
+        "operator": "V6",
+        "port": "P5",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 238,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R541",
+        "mergedReceipts": [
+          "R541"
+        ],
+        "lot": "L541",
+        "operator": "V6",
+        "port": "P5",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 289,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R542",
+        "mergedReceipts": [
+          "R542"
+        ],
+        "lot": "L542",
+        "operator": "V6",
+        "port": "P5",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 293,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R550",
+        "mergedReceipts": [
+          "R550"
+        ],
+        "lot": "L550",
+        "operator": "V6",
+        "port": "P5",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 253,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R551",
+        "mergedReceipts": [
+          "R551"
+        ],
+        "lot": "L551",
+        "operator": "V6",
+        "port": "P5",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 227,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R552",
+        "mergedReceipts": [
+          "R552"
+        ],
+        "lot": "L552",
+        "operator": "V6",
+        "port": "P5",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 275,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R560",
+        "mergedReceipts": [
+          "R560"
+        ],
+        "lot": "L560",
+        "operator": "V6",
+        "port": "P5",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 296,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R561",
+        "mergedReceipts": [
+          "R561"
+        ],
+        "lot": "L561",
+        "operator": "V6",
+        "port": "P5",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 234,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R562",
+        "mergedReceipts": [
+          "R562"
+        ],
+        "lot": "L562",
+        "operator": "V6",
+        "port": "P5",
+        "week": 6,
+        "buyer": "visitor",
+        "amount": 310,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R570",
+        "mergedReceipts": [
+          "R570"
+        ],
+        "lot": "L570",
+        "operator": "V6",
+        "port": "P5",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 296,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R571",
+        "mergedReceipts": [
+          "R571"
+        ],
+        "lot": "L571",
+        "operator": "V6",
+        "port": "P5",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 225,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R572",
+        "mergedReceipts": [
+          "R572"
+        ],
+        "lot": "L572",
+        "operator": "V6",
+        "port": "P5",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 261,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R580",
+        "mergedReceipts": [
+          "R580"
+        ],
+        "lot": "L580",
+        "operator": "V6",
+        "port": "P5",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 211,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R581",
+        "mergedReceipts": [
+          "R581"
+        ],
+        "lot": "L581",
+        "operator": "V6",
+        "port": "P5",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 284,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "R582",
+        "mergedReceipts": [
+          "R582"
+        ],
+        "lot": "L582",
+        "operator": "V6",
+        "port": "P5",
+        "week": 8,
+        "buyer": "visitor",
+        "amount": 210,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "S001",
+        "mergedReceipts": [
+          "S001"
+        ],
+        "lot": "L901",
+        "operator": "V3",
+        "port": "P2",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 205,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "S002",
+        "mergedReceipts": [
+          "S002"
+        ],
+        "lot": "L902",
+        "operator": "V3",
+        "port": "P2",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 198,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "S010",
+        "mergedReceipts": [
+          "S010"
+        ],
+        "lot": "L910",
+        "operator": "V5",
+        "port": "P4",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 236,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "S011",
+        "mergedReceipts": [
+          "S011"
+        ],
+        "lot": "L911",
+        "operator": "V5",
+        "port": "P4",
+        "week": 7,
+        "buyer": "visitor",
+        "amount": 271,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "TX1",
+        "mergedReceipts": [
+          "TX1"
+        ],
+        "lot": "L1",
+        "operator": "V2",
+        "port": "P1",
+        "week": 4,
+        "buyer": "wholesale",
+        "amount": 420,
+        "status": "confirmed",
+        "note": "同货批另有不同 buyer/金额的独立成交，已分别计入"
+      },
+      {
+        "receipt": "TX2",
+        "mergedReceipts": [
+          "TX2"
+        ],
+        "lot": "L1",
+        "operator": "V2",
+        "port": "P1",
+        "week": 4,
+        "buyer": "visitor",
+        "amount": 570,
+        "status": "confirmed",
+        "note": "同货批另有不同 buyer/金额的独立成交，已分别计入"
+      },
+      {
+        "receipt": "TX3",
+        "mergedReceipts": [
+          "TX3",
+          "TX4"
+        ],
+        "lot": "L3",
+        "operator": "V3",
+        "port": "P2",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 190,
+        "status": "duplicate",
+        "note": "渠道再报，上报周不同"
+      },
+      {
+        "receipt": "TX5",
+        "mergedReceipts": [
+          "TX5"
+        ],
+        "lot": "L4",
+        "operator": "V4",
+        "port": "P3",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 438,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "TX6",
+        "mergedReceipts": [
+          "TX6"
+        ],
+        "lot": "L5",
+        "operator": "V5",
+        "port": "P4",
+        "week": 5,
+        "buyer": "visitor",
+        "amount": 208,
+        "status": "confirmed",
+        "note": ""
+      },
+      {
+        "receipt": "TX7",
+        "mergedReceipts": [
+          "TX7"
+        ],
+        "lot": "L6",
+        "operator": "V5",
+        "port": "P4",
+        "week": 3,
+        "buyer": "visitor",
+        "amount": 197,
+        "status": "confirmed",
+        "note": ""
+      }
+    ],
+    "review": [],
+    "quality": {
+      "原始凭证数": 116,
+      "确认成交数": 115,
+      "渠道再报合并数": 1,
+      "待核记录数": 0,
+      "批发笔数": 1,
+      "游客笔数": 114
+    },
+    "groupCount": 114
+  },
+  "spillover": [
+    {
+      "port": "P1",
+      "treated": true,
+      "window": {
+        "first": 5,
+        "last": 8
+      },
+      "windowRatio": 0.172348,
+      "viaNewBridge": 91,
+      "traffic": 528,
+      "threshold": 0.2,
+      "breachWeeks": [
+        {
+          "week": 5,
+          "ratio": 0.3476190476190476,
+          "viaNewBridge": 73,
+          "traffic": 210,
+          "knownWeek": 5
+        }
+      ],
+      "spilloverEvidence": false,
+      "cleanControl": false,
+      "weekly": [
+        {
+          "week": 5,
+          "ratio": 0.347619,
+          "viaNewBridge": 73,
+          "traffic": 210,
+          "closureDays": 0,
+          "knownWeek": 5
+        },
+        {
+          "week": 6,
+          "ratio": 0.058252,
+          "viaNewBridge": 6,
+          "traffic": 103,
+          "closureDays": 1,
+          "knownWeek": 6
+        },
+        {
+          "week": 7,
+          "ratio": 0.056604,
+          "viaNewBridge": 6,
+          "traffic": 106,
+          "closureDays": 0,
+          "knownWeek": 7
+        },
+        {
+          "week": 8,
+          "ratio": 0.055046,
+          "viaNewBridge": 6,
+          "traffic": 109,
+          "closureDays": 0,
+          "knownWeek": 8
+        }
+      ]
+    },
+    {
+      "port": "P2",
+      "treated": true,
+      "window": {
+        "first": 5,
+        "last": 8
+      },
+      "windowRatio": 0.116667,
+      "viaNewBridge": 56,
+      "traffic": 480,
+      "threshold": 0.2,
+      "breachWeeks": [
+        {
+          "week": 5,
+          "ratio": 0.23809523809523808,
+          "viaNewBridge": 35,
+          "traffic": 147,
+          "knownWeek": 5
+        }
+      ],
+      "spilloverEvidence": false,
+      "cleanControl": false,
+      "weekly": [
+        {
+          "week": 5,
+          "ratio": 0.238095,
+          "viaNewBridge": 35,
+          "traffic": 147,
+          "closureDays": 1,
+          "knownWeek": 5
+        },
+        {
+          "week": 6,
+          "ratio": 0.064815,
+          "viaNewBridge": 7,
+          "traffic": 108,
+          "closureDays": 1,
+          "knownWeek": 6
+        },
+        {
+          "week": 7,
+          "ratio": 0.063063,
+          "viaNewBridge": 7,
+          "traffic": 111,
+          "closureDays": 0,
+          "knownWeek": 7
+        },
+        {
+          "week": 8,
+          "ratio": 0.061404,
+          "viaNewBridge": 7,
+          "traffic": 114,
+          "closureDays": 0,
+          "knownWeek": 8
+        }
+      ]
+    },
+    {
+      "port": "P3",
+      "treated": false,
+      "window": {
+        "first": 5,
+        "last": 8
+      },
+      "windowRatio": 0.172131,
+      "viaNewBridge": 84,
+      "traffic": 488,
+      "threshold": 0.2,
+      "breachWeeks": [
+        {
+          "week": 5,
+          "ratio": 0.42857142857142855,
+          "viaNewBridge": 60,
+          "traffic": 140,
+          "knownWeek": 8
+        }
+      ],
+      "spilloverEvidence": true,
+      "cleanControl": false,
+      "weekly": [
+        {
+          "week": 5,
+          "ratio": 0.428571,
+          "viaNewBridge": 60,
+          "traffic": 140,
+          "closureDays": 0,
+          "knownWeek": 8
+        },
+        {
+          "week": 6,
+          "ratio": 0.070796,
+          "viaNewBridge": 8,
+          "traffic": 113,
+          "closureDays": 1,
+          "knownWeek": 6
+        },
+        {
+          "week": 7,
+          "ratio": 0.068966,
+          "viaNewBridge": 8,
+          "traffic": 116,
+          "closureDays": 0,
+          "knownWeek": 7
+        },
+        {
+          "week": 8,
+          "ratio": 0.067227,
+          "viaNewBridge": 8,
+          "traffic": 119,
+          "closureDays": 0,
+          "knownWeek": 8
+        }
+      ]
+    },
+    {
+      "port": "P4",
+      "treated": false,
+      "window": {
+        "first": 5,
+        "last": 8
+      },
+      "windowRatio": 0.076233,
+      "viaNewBridge": 34,
+      "traffic": 446,
+      "threshold": 0.2,
+      "breachWeeks": [],
+      "spilloverEvidence": false,
+      "cleanControl": true,
+      "weekly": [
+        {
+          "week": 5,
+          "ratio": 0.084337,
+          "viaNewBridge": 7,
+          "traffic": 83,
+          "closureDays": 0,
+          "knownWeek": 5
+        },
+        {
+          "week": 6,
+          "ratio": 0.076271,
+          "viaNewBridge": 9,
+          "traffic": 118,
+          "closureDays": 1,
+          "knownWeek": 6
+        },
+        {
+          "week": 7,
+          "ratio": 0.07438,
+          "viaNewBridge": 9,
+          "traffic": 121,
+          "closureDays": 0,
+          "knownWeek": 7
+        },
+        {
+          "week": 8,
+          "ratio": 0.072581,
+          "viaNewBridge": 9,
+          "traffic": 124,
+          "closureDays": 0,
+          "knownWeek": 8
+        }
+      ]
+    },
+    {
+      "port": "P5",
+      "treated": false,
+      "window": {
+        "first": 5,
+        "last": 8
+      },
+      "windowRatio": 0.075,
+      "viaNewBridge": 36,
+      "traffic": 480,
+      "threshold": 0.2,
+      "breachWeeks": [],
+      "spilloverEvidence": false,
+      "cleanControl": true,
+      "weekly": [
+        {
+          "week": 5,
+          "ratio": 0.058824,
+          "viaNewBridge": 6,
+          "traffic": 102,
+          "closureDays": 2,
+          "knownWeek": 5
+        },
+        {
+          "week": 6,
+          "ratio": 0.081301,
+          "viaNewBridge": 10,
+          "traffic": 123,
+          "closureDays": 1,
+          "knownWeek": 6
+        },
+        {
+          "week": 7,
+          "ratio": 0.079365,
+          "viaNewBridge": 10,
+          "traffic": 126,
+          "closureDays": 0,
+          "knownWeek": 7
+        },
+        {
+          "week": 8,
+          "ratio": 0.077519,
+          "viaNewBridge": 10,
+          "traffic": 129,
+          "closureDays": 0,
+          "knownWeek": 8
+        }
+      ]
+    }
+  ],
+  "panel": {
+    "entries": [
+      {
+        "operator": "V2",
+        "household": "F1",
+        "week": 1,
+        "port": "P1",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 806,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R110",
+          "R111",
+          "R112"
+        ]
+      },
+      {
+        "operator": "V2",
+        "household": "F1",
+        "week": 2,
+        "port": "P1",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 685,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R120",
+          "R121",
+          "R122"
+        ]
+      },
+      {
+        "operator": "V2",
+        "household": "F1",
+        "week": 3,
+        "port": "P1",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 844,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R130",
+          "R131",
+          "R132"
+        ]
+      },
+      {
+        "operator": "V2",
+        "household": "F1",
+        "week": 4,
+        "port": "P1",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 1344,
+        "wholesale": 420,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R140",
+          "R141",
+          "R142",
+          "TX1",
+          "TX2"
+        ]
+      },
+      {
+        "operator": "V2",
+        "household": "F1",
+        "week": 5,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 985,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R150",
+          "R151",
+          "R152"
+        ]
+      },
+      {
+        "operator": "V2",
+        "household": "F1",
+        "week": 6,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 755,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R160",
+          "R161",
+          "R162"
+        ]
+      },
+      {
+        "operator": "V2",
+        "household": "F1",
+        "week": 7,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 964,
+        "wholesale": 0,
+        "included": false,
+        "reason": "weather-closed",
+        "reasonLabel": "风浪停航",
+        "receipts": [
+          "R170",
+          "R171",
+          "R172"
+        ]
+      },
+      {
+        "operator": "V2",
+        "household": "F1",
+        "week": 8,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 1008,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R180",
+          "R181",
+          "R182"
+        ]
+      },
+      {
+        "operator": "V3",
+        "household": "F1",
+        "week": 1,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": null,
+        "wholesale": null,
+        "included": false,
+        "reason": "unobserved",
+        "reasonLabel": "无交易且无状态记录（不推断为零）"
+      },
+      {
+        "operator": "V3",
+        "household": "F1",
+        "week": 2,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": null,
+        "wholesale": null,
+        "included": false,
+        "reason": "unobserved",
+        "reasonLabel": "无交易且无状态记录（不推断为零）"
+      },
+      {
+        "operator": "V3",
+        "household": "F1",
+        "week": 3,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 205,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "S001"
+        ]
+      },
+      {
+        "operator": "V3",
+        "household": "F1",
+        "week": 4,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 198,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "S002"
+        ]
+      },
+      {
+        "operator": "V3",
+        "household": "F1",
+        "week": 5,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 1065,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R250",
+          "R251",
+          "R252",
+          "TX3"
+        ]
+      },
+      {
+        "operator": "V3",
+        "household": "F1",
+        "week": 6,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 867,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R260",
+          "R261",
+          "R262"
+        ]
+      },
+      {
+        "operator": "V3",
+        "household": "F1",
+        "week": 7,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 1004,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R270",
+          "R271",
+          "R272"
+        ]
+      },
+      {
+        "operator": "V3",
+        "household": "F1",
+        "week": 8,
+        "port": "P2",
+        "area": "A",
+        "treatedPort": true,
+        "cleanControlPort": false,
+        "contaminatedPort": false,
+        "visitor": 1014,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R280",
+          "R281",
+          "R282"
+        ]
+      },
+      {
+        "operator": "V4",
+        "household": "F2",
+        "week": 1,
+        "port": "P3",
+        "area": "B",
+        "treatedPort": false,
+        "cleanControlPort": false,
+        "contaminatedPort": true,
+        "visitor": 525,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R310",
+          "R311",
+          "R312"
+        ]
+      },
+      {
+        "operator": "V4",
+        "household": "F2",
+        "week": 2,
+        "port": "P3",
+        "area": "B",
+        "treatedPort": false,
+        "cleanControlPort": false,
+        "contaminatedPort": true,
+        "visitor": 700,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R320",
+          "R321",
+          "R322"
+        ]
+      },
+      {
+        "operator": "V4",
+        "household": "F2",
+        "week": 3,
+        "port": "P3",
+        "area": "B",
+        "treatedPort": false,
+        "cleanControlPort": false,
+        "contaminatedPort": true,
+        "visitor": 646,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R330",
+          "R331",
+          "R332"
+        ]
+      },
+      {
+        "operator": "V4",
+        "household": "F2",
+        "week": 4,
+        "port": "P3",
+        "area": "B",
+        "treatedPort": false,
+        "cleanControlPort": false,
+        "contaminatedPort": true,
+        "visitor": 828,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R340",
+          "R341",
+          "R342"
+        ]
+      },
+      {
+        "operator": "V4",
+        "household": "F2",
+        "week": 5,
+        "port": "P3",
+        "area": "B",
+        "treatedPort": false,
+        "cleanControlPort": false,
+        "contaminatedPort": true,
+        "visitor": 1335,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R350",
+          "R351",
+          "R352",
+          "TX5"
+        ]
+      },
+      {
+        "operator": "V4",
+        "household": "F2",
+        "week": 6,
+        "port": "P3",
+        "area": "B",
+        "treatedPort": false,
+        "cleanControlPort": false,
+        "contaminatedPort": true,
+        "visitor": 945,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R360",
+          "R361",
+          "R362"
+        ]
+      },
+      {
+        "operator": "V4",
+        "household": "F2",
+        "week": 7,
+        "port": "P3",
+        "area": "B",
+        "treatedPort": false,
+        "cleanControlPort": false,
+        "contaminatedPort": true,
+        "visitor": 794,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R370",
+          "R371",
+          "R372"
+        ]
+      },
+      {
+        "operator": "V4",
+        "household": "F2",
+        "week": 8,
+        "port": "P3",
+        "area": "B",
+        "treatedPort": false,
+        "cleanControlPort": false,
+        "contaminatedPort": true,
+        "visitor": 930,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R380",
+          "R381",
+          "R382"
+        ]
+      },
+      {
+        "operator": "V5",
+        "household": "F3",
+        "week": 1,
+        "port": "P4",
+        "area": "C",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 607,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R410",
+          "R411",
+          "R412"
+        ]
+      },
+      {
+        "operator": "V5",
+        "household": "F3",
+        "week": 2,
+        "port": "P4",
+        "area": "C",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 662,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R420",
+          "R421",
+          "R422"
+        ]
+      },
+      {
+        "operator": "V5",
+        "household": "F3",
+        "week": 3,
+        "port": "P4",
+        "area": "C",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 995,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R430",
+          "R431",
+          "R432",
+          "TX7"
+        ]
+      },
+      {
+        "operator": "V5",
+        "household": "F3",
+        "week": 4,
+        "port": "P4",
+        "area": "C",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 695,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R440",
+          "R441",
+          "R442"
+        ]
+      },
+      {
+        "operator": "V5",
+        "household": "F3",
+        "week": 5,
+        "port": "P4",
+        "area": "C",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 985,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R450",
+          "R451",
+          "R452",
+          "TX6"
+        ]
+      },
+      {
+        "operator": "V5",
+        "household": "F3",
+        "week": 6,
+        "port": "P4",
+        "area": "C",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 897,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R460",
+          "R461",
+          "R462"
+        ]
+      },
+      {
+        "operator": "V5",
+        "household": "F3",
+        "week": 7,
+        "port": "P4",
+        "area": "C",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 507,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "S010",
+          "S011"
+        ]
+      },
+      {
+        "operator": "V5",
+        "household": "F3",
+        "week": 8,
+        "port": "P4",
+        "area": "C",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 1006,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R480",
+          "R481",
+          "R482"
+        ]
+      },
+      {
+        "operator": "V6",
+        "household": "F4",
+        "week": 1,
+        "port": "P5",
+        "area": "D",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 666,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R510",
+          "R511",
+          "R512"
+        ]
+      },
+      {
+        "operator": "V6",
+        "household": "F4",
+        "week": 2,
+        "port": "P5",
+        "area": "D",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 771,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R520",
+          "R521",
+          "R522"
+        ]
+      },
+      {
+        "operator": "V6",
+        "household": "F4",
+        "week": 3,
+        "port": "P5",
+        "area": "D",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 818,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R530",
+          "R531",
+          "R532"
+        ]
+      },
+      {
+        "operator": "V6",
+        "household": "F4",
+        "week": 4,
+        "port": "P5",
+        "area": "D",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 820,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R540",
+          "R541",
+          "R542"
+        ]
+      },
+      {
+        "operator": "V6",
+        "household": "F4",
+        "week": 5,
+        "port": "P5",
+        "area": "D",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 755,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R550",
+          "R551",
+          "R552"
+        ]
+      },
+      {
+        "operator": "V6",
+        "household": "F4",
+        "week": 6,
+        "port": "P5",
+        "area": "D",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 840,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R560",
+          "R561",
+          "R562"
+        ]
+      },
+      {
+        "operator": "V6",
+        "household": "F4",
+        "week": 7,
+        "port": "P5",
+        "area": "D",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 782,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R570",
+          "R571",
+          "R572"
+        ]
+      },
+      {
+        "operator": "V6",
+        "household": "F4",
+        "week": 8,
+        "port": "P5",
+        "area": "D",
+        "treatedPort": false,
+        "cleanControlPort": true,
+        "contaminatedPort": false,
+        "visitor": 705,
+        "wholesale": 0,
+        "included": true,
+        "reason": null,
+        "reasonLabel": null,
+        "receipts": [
+          "R580",
+          "R581",
+          "R582"
+        ]
+      }
+    ],
+    "exclusionSummary": {
+      "weather-closed": {
+        "count": 1,
+        "label": "风浪停航",
+        "operators": [
+          "V2"
+        ]
+      },
+      "unobserved": {
+        "count": 2,
+        "label": "无交易且无状态记录（不推断为零）",
+        "operators": [
+          "V3"
+        ]
+      }
+    }
+  },
+  "causal": {
+    "did": {
+      "caliber": {
+        "metric": "游客最终购买口径的经营户-周净收入（批发转售单列，不计入）",
+        "treatedDefinition": "港口 opening_week 非空的处理港经营户",
+        "controlDefinition": "未通车且分流比率无任何一周达到门槛的干净对照港经营户",
+        "exclusion": "not-open/no-report/weather-closed 与无观测周剔除，不以零值填充"
+      },
+      "weeklyMeans": {
+        "treatedPre": [
+          {
+            "week": 1,
+            "n": 1,
+            "mean": 806,
+            "operators": [
+              "V2"
+            ]
+          },
+          {
+            "week": 2,
+            "n": 1,
+            "mean": 685,
+            "operators": [
+              "V2"
+            ]
+          },
+          {
+            "week": 3,
+            "n": 2,
+            "mean": 524.5,
+            "operators": [
+              "V2",
+              "V3"
+            ]
+          },
+          {
+            "week": 4,
+            "n": 2,
+            "mean": 771,
+            "operators": [
+              "V2",
+              "V3"
+            ]
+          }
+        ],
+        "treatedPost": [
+          {
+            "week": 5,
+            "n": 2,
+            "mean": 1025,
+            "operators": [
+              "V2",
+              "V3"
+            ]
+          },
+          {
+            "week": 6,
+            "n": 2,
+            "mean": 811,
+            "operators": [
+              "V2",
+              "V3"
+            ]
+          },
+          {
+            "week": 7,
+            "n": 1,
+            "mean": 1004,
+            "operators": [
+              "V3"
+            ]
+          },
+          {
+            "week": 8,
+            "n": 2,
+            "mean": 1011,
+            "operators": [
+              "V2",
+              "V3"
+            ]
+          }
+        ],
+        "controlPre": [
+          {
+            "week": 1,
+            "n": 2,
+            "mean": 636.5,
+            "operators": [
+              "V5",
+              "V6"
+            ]
+          },
+          {
+            "week": 2,
+            "n": 2,
+            "mean": 716.5,
+            "operators": [
+              "V5",
+              "V6"
+            ]
+          },
+          {
+            "week": 3,
+            "n": 2,
+            "mean": 906.5,
+            "operators": [
+              "V5",
+              "V6"
+            ]
+          },
+          {
+            "week": 4,
+            "n": 2,
+            "mean": 757.5,
+            "operators": [
+              "V5",
+              "V6"
+            ]
+          }
+        ],
+        "controlPost": [
+          {
+            "week": 5,
+            "n": 2,
+            "mean": 870,
+            "operators": [
+              "V5",
+              "V6"
+            ]
+          },
+          {
+            "week": 6,
+            "n": 2,
+            "mean": 868.5,
+            "operators": [
+              "V5",
+              "V6"
+            ]
+          },
+          {
+            "week": 7,
+            "n": 2,
+            "mean": 644.5,
+            "operators": [
+              "V5",
+              "V6"
+            ]
+          },
+          {
+            "week": 8,
+            "n": 2,
+            "mean": 855.5,
+            "operators": [
+              "V5",
+              "V6"
+            ]
+          }
+        ]
+      },
+      "changes": {
+        "treated": 266.13,
+        "control": 55.38
+      },
+      "did": 210.75,
+      "bootstrap": {
+        "replications": 2000,
+        "seed": 20261123,
+        "alpha": 0.1,
+        "ci": {
+          "low": 48.72,
+          "high": 376.13
+        }
+      },
+      "placeboDid": -253.25,
+      "preTrend": {
+        "treatedSlope": -26.55,
+        "controlSlope": 55.3,
+        "note": "处理组通车前趋势仅由有通车前观测的经营户支撑"
+      },
+      "samples": {
+        "treated": {
+          "pre": {
+            "included": 6,
+            "excluded": {
+              "unobserved": 2
+            }
+          },
+          "post": {
+            "included": 7,
+            "excluded": {
+              "weather-closed": 1
+            }
+          }
+        },
+        "control": {
+          "pre": {
+            "included": 8,
+            "excluded": {}
+          },
+          "post": {
+            "included": 8,
+            "excluded": {}
+          }
+        },
+        "contaminatedOperators": [
+          "V4"
+        ]
+      },
+      "evidence": {
+        "grade": "较强",
+        "reason": "90% 自助区间不跨 0 且估计量具备金额意义",
+        "caveats": []
+      }
+    },
+    "distributions": {
+      "处理组": {
+        "pre": {
+          "n": 6,
+          "mean": 680.33,
+          "p25": 325,
+          "median": 745.5,
+          "p75": 834.5,
+          "min": 198,
+          "max": 1344
+        },
+        "post": {
+          "n": 7,
+          "mean": 956.86,
+          "p25": 926,
+          "median": 1004,
+          "p75": 1011,
+          "min": 755,
+          "max": 1065
+        }
+      },
+      "干净对照组": {
+        "pre": {
+          "n": 8,
+          "mean": 754.25,
+          "p25": 665,
+          "median": 733,
+          "p75": 818.5,
+          "min": 607,
+          "max": 995
+        },
+        "post": {
+          "n": 8,
+          "mean": 809.63,
+          "p25": 742.5,
+          "median": 811,
+          "p75": 919,
+          "min": 507,
+          "max": 1006
+        }
+      },
+      "分流污染组": {
+        "pre": {
+          "n": 4,
+          "mean": 674.75,
+          "p25": 615.75,
+          "median": 673,
+          "p75": 732,
+          "min": 525,
+          "max": 828
+        },
+        "post": {
+          "n": 4,
+          "mean": 1001,
+          "p25": 896,
+          "median": 937.5,
+          "p75": 1042.5,
+          "min": 794,
+          "max": 1335
+        }
+      }
+    },
+    "wholesale": {
+      "pre": {
+        "treated": 420,
+        "control": 0
+      },
+      "post": {
+        "treated": 0,
+        "control": 0
+      }
+    },
+    "traffic": {
+      "treated": {
+        "pre": {
+          "weeklyMeanTraffic": 92.88,
+          "totalViaNewBridge": 0,
+          "totalClosureDays": 2,
+          "n": 8
+        },
+        "post": {
+          "weeklyMeanTraffic": 126,
+          "totalViaNewBridge": 147,
+          "totalClosureDays": 3,
+          "n": 8
+        }
+      },
+      "cleanControl": {
+        "pre": {
+          "weeklyMeanTraffic": 110,
+          "totalViaNewBridge": 0,
+          "totalClosureDays": 2,
+          "n": 8
+        },
+        "post": {
+          "weeklyMeanTraffic": 115.75,
+          "totalViaNewBridge": 70,
+          "totalClosureDays": 4,
+          "n": 8
+        }
+      }
+    }
+  },
+  "householdLoss": [
+    {
+      "operator": "V2",
+      "portGroup": "处理组",
+      "preMean": 919.75,
+      "postMean": 916,
+      "controlDelta": 55.38,
+      "counterfactualLoss": 59.13,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 3
+    },
+    {
+      "operator": "V3",
+      "portGroup": "处理组",
+      "preMean": 201.5,
+      "postMean": 987.5,
+      "controlDelta": 55.38,
+      "counterfactualLoss": -730.62,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 2,
+      "postWeeks": 4
+    },
+    {
+      "operator": "V4",
+      "portGroup": "分流污染组",
+      "preMean": 674.75,
+      "postMean": 1001,
+      "controlDelta": 55.38,
+      "counterfactualLoss": -270.87,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 4
+    },
+    {
+      "operator": "V5",
+      "portGroup": "干净对照组",
+      "preMean": 739.75,
+      "postMean": 848.75,
+      "controlDelta": 55.38,
+      "counterfactualLoss": -53.62,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 4
+    },
+    {
+      "operator": "V6",
+      "portGroup": "干净对照组",
+      "preMean": 768.75,
+      "postMean": 770.5,
+      "controlDelta": 55.38,
+      "counterfactualLoss": 53.63,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 4
+    }
+  ],
+  "allocation": {
+    "caliber": {
+      "period": 2,
+      "rule": "已拨付先占家庭额度；正损失候选按金额降序、申请号升序；户额度与基金余量双重约束",
+      "note": "批准是资金口径动作；evidence.ledgerCheck 为台账证据核对，不符者转人工复核"
+    },
+    "decisions": [
+      {
+        "claim": "C1",
+        "operator": "V2",
+        "household": "F1",
+        "period": 2,
+        "state": "paid",
+        "updatedWeek": 6,
+        "registeredLoss": 420,
+        "requested": 300,
+        "ledger": {
+          "estimable": true,
+          "counterfactualLoss": 59.13,
+          "preMean": 919.75,
+          "postMean": 916,
+          "note": ""
+        },
+        "evidence": {
+          "ledgerCheck": "与台账反事实损失同向",
+          "flags": [],
+          "tolerance": 360.87
+        },
+        "decision": "已拨付占用",
+        "approved": 300,
+        "pending": 0,
+        "reviewRequired": false
+      },
+      {
+        "claim": "C2",
+        "operator": "V3",
+        "household": "F1",
+        "period": 2,
+        "state": "requested",
+        "updatedWeek": 9,
+        "registeredLoss": 380,
+        "requested": 260,
+        "ledger": {
+          "estimable": true,
+          "counterfactualLoss": -730.62,
+          "preMean": 201.5,
+          "postMean": 987.5,
+          "note": ""
+        },
+        "evidence": {
+          "ledgerCheck": "与台账反事实损失不符",
+          "flags": [
+            "台账反事实损失≤0，登记损失缺少收入侧支撑"
+          ]
+        },
+        "approved": 50,
+        "pending": 210,
+        "householdCap": 350,
+        "householdUsedAfter": 350,
+        "constraints": {
+          "householdRemainingBefore": 50,
+          "fundRemainingBefore": 350
+        },
+        "decision": "部分批准，余额待审",
+        "reviewRequired": true
+      }
+    ],
+    "waitlist": [
+      {
+        "claim": "C2",
+        "operator": "V3",
+        "household": "F1",
+        "period": 2,
+        "state": "requested",
+        "updatedWeek": 9,
+        "registeredLoss": 380,
+        "requested": 260,
+        "ledger": {
+          "estimable": true,
+          "counterfactualLoss": -730.62,
+          "preMean": 201.5,
+          "postMean": 987.5,
+          "note": ""
+        },
+        "evidence": {
+          "ledgerCheck": "与台账反事实损失不符",
+          "flags": [
+            "台账反事实损失≤0，登记损失缺少收入侧支撑"
+          ]
+        },
+        "approved": 50,
+        "pending": 210,
+        "householdCap": 350,
+        "householdUsedAfter": 350,
+        "constraints": {
+          "householdRemainingBefore": 50,
+          "fundRemainingBefore": 350
+        },
+        "pendingReason": "家庭额度不足（同户多经营点共用）"
+      }
+    ],
+    "ineligible": [
+      {
+        "claim": "C3",
+        "operator": "V4",
+        "household": "F2",
+        "period": 2,
+        "state": "unverified",
+        "updatedWeek": 7,
+        "registeredLoss": 0,
+        "requested": 0,
+        "ledger": {
+          "estimable": true,
+          "counterfactualLoss": -270.87,
+          "preMean": 674.75,
+          "postMean": 1001,
+          "note": ""
+        },
+        "evidence": {
+          "ledgerCheck": "无正损失证据",
+          "flags": [
+            "经营点所在对照港有经新桥分流证据，片区增减不能替代户级判断"
+          ]
+        },
+        "decision": "待核资格",
+        "approved": 0,
+        "pending": 0,
+        "holdReason": "登记损失为 0，无正损失证据"
+      },
+      {
+        "claim": "C4",
+        "operator": "V5",
+        "household": "F3",
+        "period": 2,
+        "state": "unverified",
+        "updatedWeek": 9,
+        "registeredLoss": 0,
+        "requested": 0,
+        "ledger": {
+          "estimable": true,
+          "counterfactualLoss": -53.62,
+          "preMean": 739.75,
+          "postMean": 848.75,
+          "note": ""
+        },
+        "evidence": {
+          "ledgerCheck": "无正损失证据",
+          "flags": []
+        },
+        "decision": "待核资格",
+        "approved": 0,
+        "pending": 0,
+        "holdReason": "登记损失为 0，无正损失证据"
+      }
+    ],
+    "householdLedger": [
+      {
+        "household": "F1",
+        "cap": 350,
+        "occupied": 350,
+        "remaining": 0,
+        "operators": [
+          "V2",
+          "V3"
+        ]
+      }
+    ],
+    "fundLedger": {
+      "period": 2,
+      "total": 650,
+      "occupied": 350,
+      "remaining": 300,
+      "pendingAmount": 210,
+      "paidCount": 1
+    },
+    "outOfScope": []
+  },
+  "published": {
+    "rule": "分组内可识别主体 < 3 即抑制；村与片区同时小样本时禁止凑差",
+    "areas": [
+      {
+        "level": "片区",
+        "key": "A",
+        "distinctOperators": 2,
+        "operatorWeeks": 13,
+        "visitorRevenue": null,
+        "suppressed": true,
+        "suppressionReason": "可识别经营户 2 < 发布门槛 3"
+      },
+      {
+        "level": "片区",
+        "key": "B",
+        "distinctOperators": 1,
+        "operatorWeeks": 8,
+        "visitorRevenue": null,
+        "suppressed": true,
+        "suppressionReason": "可识别经营户 1 < 发布门槛 3"
+      },
+      {
+        "level": "片区",
+        "key": "C",
+        "distinctOperators": 1,
+        "operatorWeeks": 8,
+        "visitorRevenue": null,
+        "suppressed": true,
+        "suppressionReason": "可识别经营户 1 < 发布门槛 3"
+      },
+      {
+        "level": "片区",
+        "key": "D",
+        "distinctOperators": 1,
+        "operatorWeeks": 8,
+        "visitorRevenue": null,
+        "suppressed": true,
+        "suppressionReason": "可识别经营户 1 < 发布门槛 3"
+      }
+    ],
+    "villages": [
+      {
+        "level": "村（港口）",
+        "key": "P1",
+        "area": "A",
+        "distinctOperators": 1,
+        "operatorWeeks": 4,
+        "visitorRevenue": null,
+        "suppressed": true,
+        "suppressionReason": "村与片区同时为小样本，禁止凑差识别单户，整体抑制"
+      },
+      {
+        "level": "村（港口）",
+        "key": "P2",
+        "area": "A",
+        "distinctOperators": 2,
+        "operatorWeeks": 9,
+        "visitorRevenue": null,
+        "suppressed": true,
+        "suppressionReason": "村与片区同时为小样本，禁止凑差识别单户，整体抑制"
+      },
+      {
+        "level": "村（港口）",
+        "key": "P3",
+        "area": "B",
+        "distinctOperators": 1,
+        "operatorWeeks": 8,
+        "visitorRevenue": null,
+        "suppressed": true,
+        "suppressionReason": "村与片区同时为小样本，禁止凑差识别单户，整体抑制"
+      },
+      {
+        "level": "村（港口）",
+        "key": "P4",
+        "area": "C",
+        "distinctOperators": 1,
+        "operatorWeeks": 8,
+        "visitorRevenue": null,
+        "suppressed": true,
+        "suppressionReason": "村与片区同时为小样本，禁止凑差识别单户，整体抑制"
+      },
+      {
+        "level": "村（港口）",
+        "key": "P5",
+        "area": "D",
+        "distinctOperators": 1,
+        "operatorWeeks": 8,
+        "visitorRevenue": null,
+        "suppressed": true,
+        "suppressionReason": "村与片区同时为小样本，禁止凑差识别单户，整体抑制"
+      }
+    ],
+    "distributions": {
+      "处理组": {
+        "pre": {
+          "suppressed": true,
+          "n": 6,
+          "distinctOperators": 2,
+          "reason": "可识别经营户 2 < 发布门槛 3（经营户-周 n=6 不改变小样本判断）"
+        },
+        "post": {
+          "suppressed": true,
+          "n": 7,
+          "distinctOperators": 2,
+          "reason": "可识别经营户 2 < 发布门槛 3（经营户-周 n=7 不改变小样本判断）"
+        }
+      },
+      "干净对照组": {
+        "pre": {
+          "suppressed": true,
+          "n": 8,
+          "distinctOperators": 2,
+          "reason": "可识别经营户 2 < 发布门槛 3（经营户-周 n=8 不改变小样本判断）"
+        },
+        "post": {
+          "suppressed": true,
+          "n": 8,
+          "distinctOperators": 2,
+          "reason": "可识别经营户 2 < 发布门槛 3（经营户-周 n=8 不改变小样本判断）"
+        }
+      },
+      "分流污染组": {
+        "pre": {
+          "suppressed": true,
+          "n": 4,
+          "distinctOperators": 1,
+          "reason": "可识别经营户 1 < 发布门槛 3（经营户-周 n=4 不改变小样本判断）"
+        },
+        "post": {
+          "suppressed": true,
+          "n": 4,
+          "distinctOperators": 1,
+          "reason": "可识别经营户 1 < 发布门槛 3（经营户-周 n=4 不改变小样本判断）"
+        }
+      }
+    },
+    "supportBuckets": [
+      {
+        "decision": "部分批准，余额待审",
+        "claims": 1,
+        "distinctHouseholds": 1,
+        "amountApproved": null,
+        "amountPending": null,
+        "suppressed": true,
+        "suppressionReason": "涉及家庭 1 < 发布门槛 3，抑制金额"
+      },
+      {
+        "decision": "已拨付占用",
+        "claims": 1,
+        "distinctHouseholds": 1,
+        "amountApproved": null,
+        "amountPending": null,
+        "suppressed": true,
+        "suppressionReason": "涉及家庭 1 < 发布门槛 3，抑制金额"
+      },
+      {
+        "decision": "待核资格",
+        "claims": 2,
+        "distinctHouseholds": 2,
+        "amountApproved": null,
+        "amountPending": null,
+        "suppressed": true,
+        "suppressionReason": "涉及家庭 2 < 发布门槛 3，抑制金额"
+      }
+    ],
+    "fundTotals": {
+      "total": 650,
+      "occupied": 350,
+      "remaining": 300,
+      "pendingAmount": 210
+    },
+    "reconciliation": {
+      "ledgerOccupied": 350,
+      "ledgerPending": 210,
+      "publishedApproved": 0,
+      "publishedPending": 0,
+      "suppressedApproved": 350,
+      "bucketDetailMatches": true,
+      "programTotalMatches": true,
+      "note": "桶级金额在小样本时抑制，差额保留在 suppressedApproved；项目级总额不细分主体，公开总额与资金占用恒等"
+    }
+  }
+}

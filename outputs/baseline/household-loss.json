@@ -1,0 +1,62 @@
+[
+  {
+    "operator": "V2",
+    "portGroup": "处理组",
+    "preMean": 919.75,
+    "postMean": 916,
+    "controlDelta": 89.75,
+    "counterfactualLoss": 93.5,
+    "estimable": true,
+    "note": "",
+    "preWeeks": 4,
+    "postWeeks": 3
+  },
+  {
+    "operator": "V3",
+    "portGroup": "处理组",
+    "preMean": null,
+    "postMean": 987.5,
+    "controlDelta": 89.75,
+    "counterfactualLoss": null,
+    "estimable": false,
+    "note": "通车前无可比观测，无法构造反事实",
+    "preWeeks": 0,
+    "postWeeks": 4
+  },
+  {
+    "operator": "V4",
+    "portGroup": "分流污染组",
+    "preMean": 674.75,
+    "postMean": 1001,
+    "controlDelta": 89.75,
+    "counterfactualLoss": -236.5,
+    "estimable": true,
+    "note": "",
+    "preWeeks": 4,
+    "postWeeks": 4
+  },
+  {
+    "operator": "V5",
+    "portGroup": "干净对照组",
+    "preMean": 739.75,
+    "postMean": 962.67,
+    "controlDelta": 89.75,
+    "counterfactualLoss": -133.17,
+    "estimable": true,
+    "note": "",
+    "preWeeks": 4,
+    "postWeeks": 3
+  },
+  {
+    "operator": "V6",
+    "portGroup": "干净对照组",
+    "preMean": 768.75,
+    "postMean": 770.5,
+    "controlDelta": 89.75,
+    "counterfactualLoss": 88,
+    "estimable": true,
+    "note": "",
+    "preWeeks": 4,
+    "postWeeks": 4
+  }
+]

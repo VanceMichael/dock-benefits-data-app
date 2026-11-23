@@ -1,0 +1,194 @@
+{
+  "caliber": {
+    "period": 2,
+    "rule": "已拨付先占家庭额度；正损失候选按金额降序、申请号升序；户额度与基金余量双重约束",
+    "note": "批准是资金口径动作；evidence.ledgerCheck 为台账证据核对，不符者转人工复核"
+  },
+  "decisions": [
+    {
+      "claim": "C1",
+      "operator": "V2",
+      "household": "F1",
+      "period": 2,
+      "state": "paid",
+      "updatedWeek": 6,
+      "registeredLoss": 420,
+      "requested": 300,
+      "ledger": {
+        "estimable": true,
+        "counterfactualLoss": 93.5,
+        "preMean": 919.75,
+        "postMean": 916,
+        "note": ""
+      },
+      "evidence": {
+        "ledgerCheck": "与台账反事实损失同向",
+        "flags": [],
+        "tolerance": 326.5
+      },
+      "decision": "已拨付占用",
+      "approved": 300,
+      "pending": 0,
+      "reviewRequired": false
+    },
+    {
+      "claim": "C2",
+      "operator": "V3",
+      "household": "F1",
+      "period": 2,
+      "state": "requested",
+      "updatedWeek": 7,
+      "registeredLoss": 380,
+      "requested": 260,
+      "ledger": {
+        "estimable": false,
+        "counterfactualLoss": null,
+        "preMean": null,
+        "postMean": 987.5,
+        "note": "通车前无可比观测，无法构造反事实"
+      },
+      "evidence": {
+        "ledgerCheck": "反事实不可估",
+        "flags": [
+          "通车前无可比观测，无法构造反事实"
+        ]
+      },
+      "approved": 50,
+      "pending": 210,
+      "householdCap": 350,
+      "householdUsedAfter": 350,
+      "constraints": {
+        "householdRemainingBefore": 50,
+        "fundRemainingBefore": 70
+      },
+      "decision": "部分批准，余额待审",
+      "reviewRequired": false
+    },
+    {
+      "claim": "C4",
+      "operator": "V5",
+      "household": "F3",
+      "period": 2,
+      "state": "requested",
+      "updatedWeek": 7,
+      "registeredLoss": 390,
+      "requested": 280,
+      "ledger": {
+        "estimable": true,
+        "counterfactualLoss": -133.17,
+        "preMean": 739.75,
+        "postMean": 962.67,
+        "note": ""
+      },
+      "evidence": {
+        "ledgerCheck": "与台账反事实损失不符",
+        "flags": [
+          "台账反事实损失≤0，登记损失缺少收入侧支撑"
+        ]
+      },
+      "approved": 280,
+      "pending": 0,
+      "householdCap": 350,
+      "householdUsedAfter": 280,
+      "constraints": {
+        "householdRemainingBefore": 350,
+        "fundRemainingBefore": 350
+      },
+      "decision": "建议批准",
+      "reviewRequired": true
+    }
+  ],
+  "waitlist": [
+    {
+      "claim": "C2",
+      "operator": "V3",
+      "household": "F1",
+      "period": 2,
+      "state": "requested",
+      "updatedWeek": 7,
+      "registeredLoss": 380,
+      "requested": 260,
+      "ledger": {
+        "estimable": false,
+        "counterfactualLoss": null,
+        "preMean": null,
+        "postMean": 987.5,
+        "note": "通车前无可比观测，无法构造反事实"
+      },
+      "evidence": {
+        "ledgerCheck": "反事实不可估",
+        "flags": [
+          "通车前无可比观测，无法构造反事实"
+        ]
+      },
+      "approved": 50,
+      "pending": 210,
+      "householdCap": 350,
+      "householdUsedAfter": 350,
+      "constraints": {
+        "householdRemainingBefore": 50,
+        "fundRemainingBefore": 70
+      },
+      "pendingReason": "家庭额度不足（同户多经营点共用）"
+    }
+  ],
+  "ineligible": [
+    {
+      "claim": "C3",
+      "operator": "V4",
+      "household": "F2",
+      "period": 2,
+      "state": "unverified",
+      "updatedWeek": 7,
+      "registeredLoss": 0,
+      "requested": 0,
+      "ledger": {
+        "estimable": true,
+        "counterfactualLoss": -236.5,
+        "preMean": 674.75,
+        "postMean": 1001,
+        "note": ""
+      },
+      "evidence": {
+        "ledgerCheck": "无正损失证据",
+        "flags": [
+          "经营点所在对照港有经新桥分流证据，片区增减不能替代户级判断"
+        ]
+      },
+      "decision": "待核资格",
+      "approved": 0,
+      "pending": 0,
+      "holdReason": "登记损失为 0，无正损失证据"
+    }
+  ],
+  "householdLedger": [
+    {
+      "household": "F1",
+      "cap": 350,
+      "occupied": 350,
+      "remaining": 0,
+      "operators": [
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "household": "F3",
+      "cap": 350,
+      "occupied": 280,
+      "remaining": 70,
+      "operators": [
+        "V5"
+      ]
+    }
+  ],
+  "fundLedger": {
+    "period": 2,
+    "total": 650,
+    "occupied": 630,
+    "remaining": 20,
+    "pendingAmount": 210,
+    "paidCount": 1
+  },
+  "outOfScope": []
+}

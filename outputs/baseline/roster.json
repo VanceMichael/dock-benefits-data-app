@@ -1,0 +1,106 @@
+{
+  "operators": [
+    {
+      "operator": "V2",
+      "household": "F1",
+      "basePort": "P1",
+      "currentPort": "P2",
+      "moves": [
+        {
+          "event": "M1",
+          "fromPort": "P1",
+          "toPort": "P2",
+          "effectiveWeek": 5,
+          "verifiedWeek": 7
+        }
+      ]
+    },
+    {
+      "operator": "V3",
+      "household": "F1",
+      "basePort": "P2",
+      "currentPort": "P2",
+      "moves": [
+        {
+          "event": "M2",
+          "fromPort": "P2",
+          "toPort": "P2",
+          "effectiveWeek": 1,
+          "verifiedWeek": 7
+        }
+      ]
+    },
+    {
+      "operator": "V4",
+      "household": "F2",
+      "basePort": "P3",
+      "currentPort": "P3",
+      "moves": [
+        {
+          "event": "M3",
+          "fromPort": "P3",
+          "toPort": "P3",
+          "effectiveWeek": 1,
+          "verifiedWeek": 2
+        }
+      ]
+    },
+    {
+      "operator": "V5",
+      "household": "F3",
+      "basePort": "P4",
+      "currentPort": "P4",
+      "moves": [
+        {
+          "event": "M4",
+          "fromPort": "P4",
+          "toPort": "P4",
+          "effectiveWeek": 1,
+          "verifiedWeek": 2
+        }
+      ]
+    },
+    {
+      "operator": "V6",
+      "household": "F4",
+      "basePort": "P5",
+      "currentPort": "P5",
+      "moves": [
+        {
+          "event": "M5",
+          "fromPort": "P5",
+          "toPort": "P5",
+          "effectiveWeek": 1,
+          "verifiedWeek": 2
+        }
+      ]
+    }
+  ],
+  "households": [
+    {
+      "household": "F1",
+      "operators": [
+        "V2",
+        "V3"
+      ]
+    },
+    {
+      "household": "F2",
+      "operators": [
+        "V4"
+      ]
+    },
+    {
+      "household": "F3",
+      "operators": [
+        "V5"
+      ]
+    },
+    {
+      "household": "F4",
+      "operators": [
+        "V6"
+      ]
+    }
+  ]
+}

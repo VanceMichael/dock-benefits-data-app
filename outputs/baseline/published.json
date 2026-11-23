@@ -1,0 +1,191 @@
+{
+  "rule": "分组内可识别主体 < 3 即抑制；村与片区同时小样本时禁止凑差",
+  "areas": [
+    {
+      "level": "片区",
+      "key": "A",
+      "distinctOperators": 2,
+      "operatorWeeks": 11,
+      "visitorRevenue": null,
+      "suppressed": true,
+      "suppressionReason": "可识别经营户 2 < 发布门槛 3"
+    },
+    {
+      "level": "片区",
+      "key": "B",
+      "distinctOperators": 1,
+      "operatorWeeks": 8,
+      "visitorRevenue": null,
+      "suppressed": true,
+      "suppressionReason": "可识别经营户 1 < 发布门槛 3"
+    },
+    {
+      "level": "片区",
+      "key": "C",
+      "distinctOperators": 1,
+      "operatorWeeks": 7,
+      "visitorRevenue": null,
+      "suppressed": true,
+      "suppressionReason": "可识别经营户 1 < 发布门槛 3"
+    },
+    {
+      "level": "片区",
+      "key": "D",
+      "distinctOperators": 1,
+      "operatorWeeks": 8,
+      "visitorRevenue": null,
+      "suppressed": true,
+      "suppressionReason": "可识别经营户 1 < 发布门槛 3"
+    }
+  ],
+  "villages": [
+    {
+      "level": "村（港口）",
+      "key": "P1",
+      "area": "A",
+      "distinctOperators": 1,
+      "operatorWeeks": 4,
+      "visitorRevenue": null,
+      "suppressed": true,
+      "suppressionReason": "村与片区同时为小样本，禁止凑差识别单户，整体抑制"
+    },
+    {
+      "level": "村（港口）",
+      "key": "P2",
+      "area": "A",
+      "distinctOperators": 2,
+      "operatorWeeks": 7,
+      "visitorRevenue": null,
+      "suppressed": true,
+      "suppressionReason": "村与片区同时为小样本，禁止凑差识别单户，整体抑制"
+    },
+    {
+      "level": "村（港口）",
+      "key": "P3",
+      "area": "B",
+      "distinctOperators": 1,
+      "operatorWeeks": 8,
+      "visitorRevenue": null,
+      "suppressed": true,
+      "suppressionReason": "村与片区同时为小样本，禁止凑差识别单户，整体抑制"
+    },
+    {
+      "level": "村（港口）",
+      "key": "P4",
+      "area": "C",
+      "distinctOperators": 1,
+      "operatorWeeks": 7,
+      "visitorRevenue": null,
+      "suppressed": true,
+      "suppressionReason": "村与片区同时为小样本，禁止凑差识别单户，整体抑制"
+    },
+    {
+      "level": "村（港口）",
+      "key": "P5",
+      "area": "D",
+      "distinctOperators": 1,
+      "operatorWeeks": 8,
+      "visitorRevenue": null,
+      "suppressed": true,
+      "suppressionReason": "村与片区同时为小样本，禁止凑差识别单户，整体抑制"
+    }
+  ],
+  "distributions": {
+    "处理组": {
+      "pre": {
+        "suppressed": true,
+        "n": 4,
+        "distinctOperators": 1,
+        "reason": "可识别经营户 1 < 发布门槛 3（经营户-周 n=4 不改变小样本判断）"
+      },
+      "post": {
+        "suppressed": true,
+        "n": 7,
+        "distinctOperators": 2,
+        "reason": "可识别经营户 2 < 发布门槛 3（经营户-周 n=7 不改变小样本判断）"
+      }
+    },
+    "干净对照组": {
+      "pre": {
+        "suppressed": true,
+        "n": 8,
+        "distinctOperators": 2,
+        "reason": "可识别经营户 2 < 发布门槛 3（经营户-周 n=8 不改变小样本判断）"
+      },
+      "post": {
+        "suppressed": true,
+        "n": 7,
+        "distinctOperators": 2,
+        "reason": "可识别经营户 2 < 发布门槛 3（经营户-周 n=7 不改变小样本判断）"
+      }
+    },
+    "分流污染组": {
+      "pre": {
+        "suppressed": true,
+        "n": 4,
+        "distinctOperators": 1,
+        "reason": "可识别经营户 1 < 发布门槛 3（经营户-周 n=4 不改变小样本判断）"
+      },
+      "post": {
+        "suppressed": true,
+        "n": 4,
+        "distinctOperators": 1,
+        "reason": "可识别经营户 1 < 发布门槛 3（经营户-周 n=4 不改变小样本判断）"
+      }
+    }
+  },
+  "supportBuckets": [
+    {
+      "decision": "建议批准",
+      "claims": 1,
+      "distinctHouseholds": 1,
+      "amountApproved": null,
+      "amountPending": null,
+      "suppressed": true,
+      "suppressionReason": "涉及家庭 1 < 发布门槛 3，抑制金额"
+    },
+    {
+      "decision": "部分批准，余额待审",
+      "claims": 1,
+      "distinctHouseholds": 1,
+      "amountApproved": null,
+      "amountPending": null,
+      "suppressed": true,
+      "suppressionReason": "涉及家庭 1 < 发布门槛 3，抑制金额"
+    },
+    {
+      "decision": "已拨付占用",
+      "claims": 1,
+      "distinctHouseholds": 1,
+      "amountApproved": null,
+      "amountPending": null,
+      "suppressed": true,
+      "suppressionReason": "涉及家庭 1 < 发布门槛 3，抑制金额"
+    },
+    {
+      "decision": "待核资格",
+      "claims": 1,
+      "distinctHouseholds": 1,
+      "amountApproved": null,
+      "amountPending": null,
+      "suppressed": true,
+      "suppressionReason": "涉及家庭 1 < 发布门槛 3，抑制金额"
+    }
+  ],
+  "fundTotals": {
+    "total": 650,
+    "occupied": 630,
+    "remaining": 20,
+    "pendingAmount": 210
+  },
+  "reconciliation": {
+    "ledgerOccupied": 630,
+    "ledgerPending": 210,
+    "publishedApproved": 0,
+    "publishedPending": 0,
+    "suppressedApproved": 630,
+    "bucketDetailMatches": true,
+    "programTotalMatches": true,
+    "note": "桶级金额在小样本时抑制，差额保留在 suppressedApproved；项目级总额不细分主体，公开总额与资金占用恒等"
+  }
+}

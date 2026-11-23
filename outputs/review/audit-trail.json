@@ -1,0 +1,112 @@
+{
+  "baseline": {
+    "generatedAt": "2026-11-23T05:19:29.294Z",
+    "inputFiles": [
+      {
+        "table": "ports",
+        "bytes": 101,
+        "sha256": "a74ee2dae5eb71e3e0c40eb5ccc7dcd414aa6d7641129e69848d26e98ade5dc0"
+      },
+      {
+        "table": "visits",
+        "bytes": 654,
+        "sha256": "aefa8891b946401705967184adf0b5a63fdc6c17b123aa789dcae636dfae8698"
+      },
+      {
+        "table": "movements",
+        "bytes": 167,
+        "sha256": "dce44b3a4aeb8b1a19ac7d524a123991c657a052f6eec25790ac5ddaca510ee8"
+      },
+      {
+        "table": "transactions",
+        "bytes": 4201,
+        "sha256": "6552b8c4e0a93092eeddebdef8d3ba7b32c8cbabc452ccc26e06b82ce7e50d33"
+      },
+      {
+        "table": "support",
+        "bytes": 166,
+        "sha256": "babc0d5852a3d6192dfbfcaffc5f1efe19de071aed45354dd2f21539c25a7320"
+      },
+      {
+        "table": "fund",
+        "bytes": 80,
+        "sha256": "4eecf8a2a6629b029352f1494084aca74cc6b469d2c832cef987cdec3677a27c"
+      },
+      {
+        "table": "period-weeks",
+        "bytes": 40,
+        "sha256": "c6e6360b437cbe1acc8e698428f23c8d7fbf088d8b98531f5f518a3b7df577db"
+      },
+      {
+        "table": "operator-open",
+        "bytes": 105,
+        "sha256": "d3b5bddb4b6f7ee62be433b2e6598213fccc06f82166c56055d9dc811ec51aa3"
+      }
+    ],
+    "bootstrapSeed": 2000
+  },
+  "reviewed": {
+    "generatedAt": "2026-11-23T05:19:29.309Z",
+    "inputFiles": [
+      {
+        "table": "ports",
+        "bytes": 101,
+        "sha256": "a74ee2dae5eb71e3e0c40eb5ccc7dcd414aa6d7641129e69848d26e98ade5dc0"
+      },
+      {
+        "table": "visits",
+        "bytes": 654,
+        "sha256": "aefa8891b946401705967184adf0b5a63fdc6c17b123aa789dcae636dfae8698"
+      },
+      {
+        "table": "movements",
+        "bytes": 167,
+        "sha256": "dce44b3a4aeb8b1a19ac7d524a123991c657a052f6eec25790ac5ddaca510ee8"
+      },
+      {
+        "table": "transactions",
+        "bytes": 4201,
+        "sha256": "6552b8c4e0a93092eeddebdef8d3ba7b32c8cbabc452ccc26e06b82ce7e50d33"
+      },
+      {
+        "table": "support",
+        "bytes": 166,
+        "sha256": "babc0d5852a3d6192dfbfcaffc5f1efe19de071aed45354dd2f21539c25a7320"
+      },
+      {
+        "table": "fund",
+        "bytes": 80,
+        "sha256": "4eecf8a2a6629b029352f1494084aca74cc6b469d2c832cef987cdec3677a27c"
+      },
+      {
+        "table": "period-weeks",
+        "bytes": 40,
+        "sha256": "c6e6360b437cbe1acc8e698428f23c8d7fbf088d8b98531f5f518a3b7df577db"
+      },
+      {
+        "table": "operator-open",
+        "bytes": 105,
+        "sha256": "d3b5bddb4b6f7ee62be433b2e6598213fccc06f82166c56055d9dc811ec51aa3"
+      }
+    ],
+    "supplementFiles": [
+      {
+        "table": "transactions-补录",
+        "sha256": "2df1d65849476f2bff620f48acfcef841e4b077d8c4d728ee5d7276b6fb0559d"
+      },
+      {
+        "table": "support-补录",
+        "sha256": "9aed2b3288e6797b80316c0923a65246dd0d1072f493a8f20cee0644f7c81a14"
+      },
+      {
+        "table": "operator-open-补录",
+        "sha256": "e8081a665a1ed4a5586d8491dae1dd2553a062fd0fa5224099fa7231de945452"
+      }
+    ]
+  },
+  "scope": {
+    "changedPanelCells": 3,
+    "changedClaims": 2,
+    "paidClaimsRequiringSeparateReview": 1
+  }
+}

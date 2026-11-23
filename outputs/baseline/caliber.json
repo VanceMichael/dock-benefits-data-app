@@ -1,0 +1,176 @@
+{
+  "generatedAt": "2026-11-23T05:19:29.227Z",
+  "engine": "node:test 管线（仅依赖 Node.js 标准库）",
+  "bootstrapReplications": 2000,
+  "periodWindows": {
+    "pre": {
+      "period": 1,
+      "first": 1,
+      "last": 4
+    },
+    "post": {
+      "period": 2,
+      "first": 5,
+      "last": 8
+    }
+  },
+  "fundParameters": {
+    "period": 2,
+    "total": 650,
+    "perHousehold": 350,
+    "spilloverThreshold": 0.2,
+    "publishMinimum": 3
+  },
+  "definitions": {
+    "渠道再报": "同 lot、同经营户、等额的 dock/online 两条凭证视为同一成交，只计一次",
+    "批发与游客": "wholesale 为入手后再售，visitor 为最终购买；因果与扶持的主口径只用 visitor",
+    "迁摊": "归属按 effective_week，核实日期按 verified_week；迁摊不新增经营户",
+    "分流门槛": "对照港通车后任一周 via_new_bridge/traffic ≥ 0.2 即移出干净对照组",
+    "缺失处理": "not-open/no-report/weather-closed 分别剔除并披露；无观测不以零填充",
+    "扶持排序": "正损失按登记金额降序、申请号升序；paid 先占家庭额度与基金",
+    "发布门槛": "分组可识别主体 < 3 抑制；村与片区同时小样本禁止凑差"
+  },
+  "inputFiles": [
+    {
+      "table": "ports",
+      "bytes": 101,
+      "sha256": "a74ee2dae5eb71e3e0c40eb5ccc7dcd414aa6d7641129e69848d26e98ade5dc0"
+    },
+    {
+      "table": "visits",
+      "bytes": 654,
+      "sha256": "aefa8891b946401705967184adf0b5a63fdc6c17b123aa789dcae636dfae8698"
+    },
+    {
+      "table": "movements",
+      "bytes": 167,
+      "sha256": "dce44b3a4aeb8b1a19ac7d524a123991c657a052f6eec25790ac5ddaca510ee8"
+    },
+    {
+      "table": "transactions",
+      "bytes": 4201,
+      "sha256": "6552b8c4e0a93092eeddebdef8d3ba7b32c8cbabc452ccc26e06b82ce7e50d33"
+    },
+    {
+      "table": "support",
+      "bytes": 166,
+      "sha256": "babc0d5852a3d6192dfbfcaffc5f1efe19de071aed45354dd2f21539c25a7320"
+    },
+    {
+      "table": "fund",
+      "bytes": 80,
+      "sha256": "4eecf8a2a6629b029352f1494084aca74cc6b469d2c832cef987cdec3677a27c"
+    },
+    {
+      "table": "period-weeks",
+      "bytes": 40,
+      "sha256": "c6e6360b437cbe1acc8e698428f23c8d7fbf088d8b98531f5f518a3b7df577db"
+    },
+    {
+      "table": "operator-open",
+      "bytes": 105,
+      "sha256": "d3b5bddb4b6f7ee62be433b2e6598213fccc06f82166c56055d9dc811ec51aa3"
+    }
+  ],
+  "tableHeaders": {
+    "ports": [
+      "port",
+      "area",
+      "opening_week",
+      "eligible_reference"
+    ],
+    "visits": [
+      "port",
+      "week",
+      "via_new_bridge",
+      "traffic",
+      "closure_days",
+      "known_week"
+    ],
+    "movements": [
+      "event",
+      "operator",
+      "household",
+      "from_port",
+      "to_port",
+      "effective_week",
+      "verified_week"
+    ],
+    "transactions": [
+      "receipt",
+      "lot",
+      "operator",
+      "port",
+      "week",
+      "channel",
+      "buyer",
+      "net_amount",
+      "known_week"
+    ],
+    "support": [
+      "claim",
+      "operator",
+      "period",
+      "evidence_loss",
+      "amount",
+      "state",
+      "updated_week"
+    ],
+    "fund": [
+      "period",
+      "total",
+      "per_household",
+      "spillover_threshold",
+      "publish_minimum"
+    ],
+    "period-weeks": [
+      "period",
+      "first_week",
+      "last_week"
+    ],
+    "operator-open": [
+      "operator",
+      "week",
+      "declared",
+      "known_week"
+    ]
+  },
+  "links": [
+    [
+      "visits",
+      "port",
+      "ports",
+      "port"
+    ],
+    [
+      "movements",
+      "from_port",
+      "ports",
+      "port"
+    ],
+    [
+      "movements",
+      "to_port",
+      "ports",
+      "port"
+    ],
+    [
+      "support",
+      "period",
+      "period-weeks",
+      "period"
+    ],
+    [
+      "transactions",
+      "operator",
+      "movements",
+      "operator"
+    ],
+    [
+      "transactions",
+      "port",
+      "ports",
+      "port"
+    ]
+  ]
+}

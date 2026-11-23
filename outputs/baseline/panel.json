@@ -1,0 +1,815 @@
+{
+  "entries": [
+    {
+      "operator": "V2",
+      "household": "F1",
+      "week": 1,
+      "port": "P1",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 806,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R110",
+        "R111",
+        "R112"
+      ]
+    },
+    {
+      "operator": "V2",
+      "household": "F1",
+      "week": 2,
+      "port": "P1",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 685,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R120",
+        "R121",
+        "R122"
+      ]
+    },
+    {
+      "operator": "V2",
+      "household": "F1",
+      "week": 3,
+      "port": "P1",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 844,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R130",
+        "R131",
+        "R132"
+      ]
+    },
+    {
+      "operator": "V2",
+      "household": "F1",
+      "week": 4,
+      "port": "P1",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 1344,
+      "wholesale": 420,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R140",
+        "R141",
+        "R142",
+        "TX1",
+        "TX2"
+      ]
+    },
+    {
+      "operator": "V2",
+      "household": "F1",
+      "week": 5,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 985,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R150",
+        "R151",
+        "R152"
+      ]
+    },
+    {
+      "operator": "V2",
+      "household": "F1",
+      "week": 6,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 755,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R160",
+        "R161",
+        "R162"
+      ]
+    },
+    {
+      "operator": "V2",
+      "household": "F1",
+      "week": 7,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 964,
+      "wholesale": 0,
+      "included": false,
+      "reason": "weather-closed",
+      "reasonLabel": "风浪停航",
+      "receipts": [
+        "R170",
+        "R171",
+        "R172"
+      ]
+    },
+    {
+      "operator": "V2",
+      "household": "F1",
+      "week": 8,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 1008,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R180",
+        "R181",
+        "R182"
+      ]
+    },
+    {
+      "operator": "V3",
+      "household": "F1",
+      "week": 1,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": null,
+      "wholesale": null,
+      "included": false,
+      "reason": "unobserved",
+      "reasonLabel": "无交易且无状态记录（不推断为零）"
+    },
+    {
+      "operator": "V3",
+      "household": "F1",
+      "week": 2,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": null,
+      "wholesale": null,
+      "included": false,
+      "reason": "unobserved",
+      "reasonLabel": "无交易且无状态记录（不推断为零）"
+    },
+    {
+      "operator": "V3",
+      "household": "F1",
+      "week": 3,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": null,
+      "wholesale": null,
+      "included": false,
+      "reason": "not-open",
+      "reasonLabel": "实际停业"
+    },
+    {
+      "operator": "V3",
+      "household": "F1",
+      "week": 4,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": null,
+      "wholesale": null,
+      "included": false,
+      "reason": "not-open",
+      "reasonLabel": "实际停业"
+    },
+    {
+      "operator": "V3",
+      "household": "F1",
+      "week": 5,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 1065,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R250",
+        "R251",
+        "R252",
+        "TX3"
+      ]
+    },
+    {
+      "operator": "V3",
+      "household": "F1",
+      "week": 6,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 867,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R260",
+        "R261",
+        "R262"
+      ]
+    },
+    {
+      "operator": "V3",
+      "household": "F1",
+      "week": 7,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 1004,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R270",
+        "R271",
+        "R272"
+      ]
+    },
+    {
+      "operator": "V3",
+      "household": "F1",
+      "week": 8,
+      "port": "P2",
+      "area": "A",
+      "treatedPort": true,
+      "cleanControlPort": false,
+      "contaminatedPort": false,
+      "visitor": 1014,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R280",
+        "R281",
+        "R282"
+      ]
+    },
+    {
+      "operator": "V4",
+      "household": "F2",
+      "week": 1,
+      "port": "P3",
+      "area": "B",
+      "treatedPort": false,
+      "cleanControlPort": false,
+      "contaminatedPort": true,
+      "visitor": 525,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R310",
+        "R311",
+        "R312"
+      ]
+    },
+    {
+      "operator": "V4",
+      "household": "F2",
+      "week": 2,
+      "port": "P3",
+      "area": "B",
+      "treatedPort": false,
+      "cleanControlPort": false,
+      "contaminatedPort": true,
+      "visitor": 700,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R320",
+        "R321",
+        "R322"
+      ]
+    },
+    {
+      "operator": "V4",
+      "household": "F2",
+      "week": 3,
+      "port": "P3",
+      "area": "B",
+      "treatedPort": false,
+      "cleanControlPort": false,
+      "contaminatedPort": true,
+      "visitor": 646,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R330",
+        "R331",
+        "R332"
+      ]
+    },
+    {
+      "operator": "V4",
+      "household": "F2",
+      "week": 4,
+      "port": "P3",
+      "area": "B",
+      "treatedPort": false,
+      "cleanControlPort": false,
+      "contaminatedPort": true,
+      "visitor": 828,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R340",
+        "R341",
+        "R342"
+      ]
+    },
+    {
+      "operator": "V4",
+      "household": "F2",
+      "week": 5,
+      "port": "P3",
+      "area": "B",
+      "treatedPort": false,
+      "cleanControlPort": false,
+      "contaminatedPort": true,
+      "visitor": 1335,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R350",
+        "R351",
+        "R352",
+        "TX5"
+      ]
+    },
+    {
+      "operator": "V4",
+      "household": "F2",
+      "week": 6,
+      "port": "P3",
+      "area": "B",
+      "treatedPort": false,
+      "cleanControlPort": false,
+      "contaminatedPort": true,
+      "visitor": 945,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R360",
+        "R361",
+        "R362"
+      ]
+    },
+    {
+      "operator": "V4",
+      "household": "F2",
+      "week": 7,
+      "port": "P3",
+      "area": "B",
+      "treatedPort": false,
+      "cleanControlPort": false,
+      "contaminatedPort": true,
+      "visitor": 794,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R370",
+        "R371",
+        "R372"
+      ]
+    },
+    {
+      "operator": "V4",
+      "household": "F2",
+      "week": 8,
+      "port": "P3",
+      "area": "B",
+      "treatedPort": false,
+      "cleanControlPort": false,
+      "contaminatedPort": true,
+      "visitor": 930,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R380",
+        "R381",
+        "R382"
+      ]
+    },
+    {
+      "operator": "V5",
+      "household": "F3",
+      "week": 1,
+      "port": "P4",
+      "area": "C",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 607,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R410",
+        "R411",
+        "R412"
+      ]
+    },
+    {
+      "operator": "V5",
+      "household": "F3",
+      "week": 2,
+      "port": "P4",
+      "area": "C",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 662,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R420",
+        "R421",
+        "R422"
+      ]
+    },
+    {
+      "operator": "V5",
+      "household": "F3",
+      "week": 3,
+      "port": "P4",
+      "area": "C",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 995,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R430",
+        "R431",
+        "R432",
+        "TX7"
+      ]
+    },
+    {
+      "operator": "V5",
+      "household": "F3",
+      "week": 4,
+      "port": "P4",
+      "area": "C",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 695,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R440",
+        "R441",
+        "R442"
+      ]
+    },
+    {
+      "operator": "V5",
+      "household": "F3",
+      "week": 5,
+      "port": "P4",
+      "area": "C",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 985,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R450",
+        "R451",
+        "R452",
+        "TX6"
+      ]
+    },
+    {
+      "operator": "V5",
+      "household": "F3",
+      "week": 6,
+      "port": "P4",
+      "area": "C",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 897,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R460",
+        "R461",
+        "R462"
+      ]
+    },
+    {
+      "operator": "V5",
+      "household": "F3",
+      "week": 7,
+      "port": "P4",
+      "area": "C",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": null,
+      "wholesale": null,
+      "included": false,
+      "reason": "no-report",
+      "reasonLabel": "缺报"
+    },
+    {
+      "operator": "V5",
+      "household": "F3",
+      "week": 8,
+      "port": "P4",
+      "area": "C",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 1006,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R480",
+        "R481",
+        "R482"
+      ]
+    },
+    {
+      "operator": "V6",
+      "household": "F4",
+      "week": 1,
+      "port": "P5",
+      "area": "D",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 666,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R510",
+        "R511",
+        "R512"
+      ]
+    },
+    {
+      "operator": "V6",
+      "household": "F4",
+      "week": 2,
+      "port": "P5",
+      "area": "D",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 771,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R520",
+        "R521",
+        "R522"
+      ]
+    },
+    {
+      "operator": "V6",
+      "household": "F4",
+      "week": 3,
+      "port": "P5",
+      "area": "D",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 818,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R530",
+        "R531",
+        "R532"
+      ]
+    },
+    {
+      "operator": "V6",
+      "household": "F4",
+      "week": 4,
+      "port": "P5",
+      "area": "D",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 820,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R540",
+        "R541",
+        "R542"
+      ]
+    },
+    {
+      "operator": "V6",
+      "household": "F4",
+      "week": 5,
+      "port": "P5",
+      "area": "D",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 755,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R550",
+        "R551",
+        "R552"
+      ]
+    },
+    {
+      "operator": "V6",
+      "household": "F4",
+      "week": 6,
+      "port": "P5",
+      "area": "D",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 840,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R560",
+        "R561",
+        "R562"
+      ]
+    },
+    {
+      "operator": "V6",
+      "household": "F4",
+      "week": 7,
+      "port": "P5",
+      "area": "D",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 782,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R570",
+        "R571",
+        "R572"
+      ]
+    },
+    {
+      "operator": "V6",
+      "household": "F4",
+      "week": 8,
+      "port": "P5",
+      "area": "D",
+      "treatedPort": false,
+      "cleanControlPort": true,
+      "contaminatedPort": false,
+      "visitor": 705,
+      "wholesale": 0,
+      "included": true,
+      "reason": null,
+      "reasonLabel": null,
+      "receipts": [
+        "R580",
+        "R581",
+        "R582"
+      ]
+    }
+  ],
+  "exclusionSummary": {
+    "weather-closed": {
+      "count": 1,
+      "label": "风浪停航",
+      "operators": [
+        "V2"
+      ]
+    },
+    "unobserved": {
+      "count": 2,
+      "label": "无交易且无状态记录（不推断为零）",
+      "operators": [
+        "V3"
+      ]
+    },
+    "not-open": {
+      "count": 2,
+      "label": "实际停业",
+      "operators": [
+        "V3"
+      ]
+    },
+    "no-report": {
+      "count": 1,
+      "label": "缺报",
+      "operators": [
+        "V5"
+      ]
+    }
+  }
+}

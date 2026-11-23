@@ -1,0 +1,66 @@
+{
+  "tables": {
+    "ports": [
+      "port",
+      "area",
+      "opening_week",
+      "eligible_reference"
+    ],
+    "visits": [
+      "port",
+      "week",
+      "via_new_bridge",
+      "traffic",
+      "closure_days",
+      "known_week"
+    ],
+    "movements": [
+      "event",
+      "operator",
+      "household",
+      "from_port",
+      "to_port",
+      "effective_week",
+      "verified_week"
+    ],
+    "transactions": [
+      "receipt",
+      "lot",
+      "operator",
+      "port",
+      "week",
+      "channel",
+      "buyer",
+      "net_amount",
+      "known_week"
+    ],
+    "support": [
+      "claim",
+      "operator",
+      "period",
+      "evidence_loss",
+      "amount",
+      "state",
+      "updated_week"
+    ],
+    "fund": [
+      "period",
+      "total",
+      "per_household",
+      "spillover_threshold",
+      "publish_minimum"
+    ],
+    "period-weeks": [
+      "period",
+      "first_week",
+      "last_week"
+    ],
+    "operator-open": [
+      "operator",
+      "week",
+      "declared",
+      "known_week"
+    ]
+  },
+  "links": []
+}

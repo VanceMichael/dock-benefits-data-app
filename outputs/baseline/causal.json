@@ -1,0 +1,319 @@
+{
+  "did": {
+    "caliber": {
+      "metric": "游客最终购买口径的经营户-周净收入（批发转售单列，不计入）",
+      "treatedDefinition": "港口 opening_week 非空的处理港经营户",
+      "controlDefinition": "未通车且分流比率无任何一周达到门槛的干净对照港经营户",
+      "exclusion": "not-open/no-report/weather-closed 与无观测周剔除，不以零值填充"
+    },
+    "weeklyMeans": {
+      "treatedPre": [
+        {
+          "week": 1,
+          "n": 1,
+          "mean": 806,
+          "operators": [
+            "V2"
+          ]
+        },
+        {
+          "week": 2,
+          "n": 1,
+          "mean": 685,
+          "operators": [
+            "V2"
+          ]
+        },
+        {
+          "week": 3,
+          "n": 1,
+          "mean": 844,
+          "operators": [
+            "V2"
+          ]
+        },
+        {
+          "week": 4,
+          "n": 1,
+          "mean": 1344,
+          "operators": [
+            "V2"
+          ]
+        }
+      ],
+      "treatedPost": [
+        {
+          "week": 5,
+          "n": 2,
+          "mean": 1025,
+          "operators": [
+            "V2",
+            "V3"
+          ]
+        },
+        {
+          "week": 6,
+          "n": 2,
+          "mean": 811,
+          "operators": [
+            "V2",
+            "V3"
+          ]
+        },
+        {
+          "week": 7,
+          "n": 1,
+          "mean": 1004,
+          "operators": [
+            "V3"
+          ]
+        },
+        {
+          "week": 8,
+          "n": 2,
+          "mean": 1011,
+          "operators": [
+            "V2",
+            "V3"
+          ]
+        }
+      ],
+      "controlPre": [
+        {
+          "week": 1,
+          "n": 2,
+          "mean": 636.5,
+          "operators": [
+            "V5",
+            "V6"
+          ]
+        },
+        {
+          "week": 2,
+          "n": 2,
+          "mean": 716.5,
+          "operators": [
+            "V5",
+            "V6"
+          ]
+        },
+        {
+          "week": 3,
+          "n": 2,
+          "mean": 906.5,
+          "operators": [
+            "V5",
+            "V6"
+          ]
+        },
+        {
+          "week": 4,
+          "n": 2,
+          "mean": 757.5,
+          "operators": [
+            "V5",
+            "V6"
+          ]
+        }
+      ],
+      "controlPost": [
+        {
+          "week": 5,
+          "n": 2,
+          "mean": 870,
+          "operators": [
+            "V5",
+            "V6"
+          ]
+        },
+        {
+          "week": 6,
+          "n": 2,
+          "mean": 868.5,
+          "operators": [
+            "V5",
+            "V6"
+          ]
+        },
+        {
+          "week": 7,
+          "n": 1,
+          "mean": 782,
+          "operators": [
+            "V6"
+          ]
+        },
+        {
+          "week": 8,
+          "n": 2,
+          "mean": 855.5,
+          "operators": [
+            "V5",
+            "V6"
+          ]
+        }
+      ]
+    },
+    "changes": {
+      "treated": 43,
+      "control": 89.75
+    },
+    "did": -46.75,
+    "bootstrap": {
+      "replications": 2000,
+      "seed": 20261123,
+      "alpha": 0.1,
+      "ci": {
+        "low": -295.43,
+        "high": 173.02
+      }
+    },
+    "placeboDid": 193,
+    "preTrend": {
+      "treatedSlope": 177.3,
+      "controlSlope": 55.3,
+      "note": "处理组通车前趋势仅由有通车前观测的经营户支撑"
+    },
+    "samples": {
+      "treated": {
+        "pre": {
+          "included": 4,
+          "excluded": {
+            "unobserved": 2,
+            "not-open": 2
+          }
+        },
+        "post": {
+          "included": 7,
+          "excluded": {
+            "weather-closed": 1
+          }
+        }
+      },
+      "control": {
+        "pre": {
+          "included": 8,
+          "excluded": {}
+        },
+        "post": {
+          "included": 7,
+          "excluded": {
+            "no-report": 1
+          }
+        }
+      },
+      "contaminatedOperators": [
+        "V4"
+      ]
+    },
+    "evidence": {
+      "grade": "有限",
+      "reason": "90% 自助区间跨越 0，方向证据不稳健",
+      "caveats": [
+        "处理组仅有 1 个经营户具备通车前可比观测，户间异质性无法检验"
+      ]
+    }
+  },
+  "distributions": {
+    "处理组": {
+      "pre": {
+        "n": 4,
+        "mean": 919.75,
+        "p25": 775.75,
+        "median": 825,
+        "p75": 969,
+        "min": 685,
+        "max": 1344
+      },
+      "post": {
+        "n": 7,
+        "mean": 956.86,
+        "p25": 926,
+        "median": 1004,
+        "p75": 1011,
+        "min": 755,
+        "max": 1065
+      }
+    },
+    "干净对照组": {
+      "pre": {
+        "n": 8,
+        "mean": 754.25,
+        "p25": 665,
+        "median": 733,
+        "p75": 818.5,
+        "min": 607,
+        "max": 995
+      },
+      "post": {
+        "n": 7,
+        "mean": 852.86,
+        "p25": 768.5,
+        "median": 840,
+        "p75": 941,
+        "min": 705,
+        "max": 1006
+      }
+    },
+    "分流污染组": {
+      "pre": {
+        "n": 4,
+        "mean": 674.75,
+        "p25": 615.75,
+        "median": 673,
+        "p75": 732,
+        "min": 525,
+        "max": 828
+      },
+      "post": {
+        "n": 4,
+        "mean": 1001,
+        "p25": 896,
+        "median": 937.5,
+        "p75": 1042.5,
+        "min": 794,
+        "max": 1335
+      }
+    }
+  },
+  "wholesale": {
+    "pre": {
+      "treated": 420,
+      "control": 0
+    },
+    "post": {
+      "treated": 0,
+      "control": 0
+    }
+  },
+  "traffic": {
+    "treated": {
+      "pre": {
+        "weeklyMeanTraffic": 92.88,
+        "totalViaNewBridge": 0,
+        "totalClosureDays": 2,
+        "n": 8
+      },
+      "post": {
+        "weeklyMeanTraffic": 126,
+        "totalViaNewBridge": 147,
+        "totalClosureDays": 3,
+        "n": 8
+      }
+    },
+    "cleanControl": {
+      "pre": {
+        "weeklyMeanTraffic": 110,
+        "totalViaNewBridge": 0,
+        "totalClosureDays": 2,
+        "n": 8
+      },
+      "post": {
+        "weeklyMeanTraffic": 115.75,
+        "totalViaNewBridge": 70,
+        "totalClosureDays": 4,
+        "n": 8
+      }
+    }
+  }
+}

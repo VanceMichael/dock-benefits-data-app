@@ -1,0 +1,5 @@
+receipt,lot,operator,port,week,channel,buyer,net_amount,known_week
+S001,L901,V3,P2,3,dock,visitor,205,9
+S002,L902,V3,P2,4,dock,visitor,198,9
+S010,L910,V5,P4,7,dock,visitor,236,9
+S011,L911,V5,P4,7,dock,visitor,271,9

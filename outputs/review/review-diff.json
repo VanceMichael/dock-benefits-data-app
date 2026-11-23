@@ -1,0 +1,348 @@
+{
+  "supplementEvidence": [
+    {
+      "table": "transactions-补录",
+      "sha256": "2df1d65849476f2bff620f48acfcef841e4b077d8c4d728ee5d7276b6fb0559d"
+    },
+    {
+      "table": "support-补录",
+      "sha256": "9aed2b3288e6797b80316c0923a65246dd0d1072f493a8f20cee0644f7c81a14"
+    },
+    {
+      "table": "operator-open-补录",
+      "sha256": "e8081a665a1ed4a5586d8491dae1dd2553a062fd0fa5224099fa7231de945452"
+    }
+  ],
+  "notes": [
+    {
+      "id": "N1",
+      "claim": "C1",
+      "operator": "V2",
+      "summary": "结算复核：C1 已拨付 300 的登记损失 420 缺少收入侧凭据，TX1 为批发再售不能与游客零售混算，已拨款需另行复核追回或抵扣路径。",
+      "receipts": [
+        "TX1"
+      ],
+      "updated_week": 9
+    },
+    {
+      "id": "N2",
+      "operator": "V3",
+      "summary": "淡季交易簿补回第 3、4 周 dock 零售（S001/S002），V3 通车前均值由不可估变为可估，C2 的损失证据需按新反事实重判。",
+      "receipts": [
+        "S001",
+        "S002"
+      ],
+      "updated_week": 9
+    },
+    {
+      "id": "N3",
+      "operator": "V5",
+      "summary": "第 7 周 no-report 经结算系统补报（S010/S011），该周由缺报剔除转为可比观测；C4 凭据核实后登记损失更正为 0，不再具备扶持资格。",
+      "receipts": [
+        "S010",
+        "S011"
+      ],
+      "updated_week": 9
+    }
+  ],
+  "addedCanonicalSales": [
+    {
+      "receipt": "S001",
+      "lot": "L901",
+      "operator": "V3",
+      "port": "P2",
+      "week": 3,
+      "buyer": "visitor",
+      "amount": 205,
+      "status": "confirmed"
+    },
+    {
+      "receipt": "S002",
+      "lot": "L902",
+      "operator": "V3",
+      "port": "P2",
+      "week": 4,
+      "buyer": "visitor",
+      "amount": 198,
+      "status": "confirmed"
+    },
+    {
+      "receipt": "S010",
+      "lot": "L910",
+      "operator": "V5",
+      "port": "P4",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 236,
+      "status": "confirmed"
+    },
+    {
+      "receipt": "S011",
+      "lot": "L911",
+      "operator": "V5",
+      "port": "P4",
+      "week": 7,
+      "buyer": "visitor",
+      "amount": 271,
+      "status": "confirmed"
+    }
+  ],
+  "reviewQueueDelta": 0,
+  "changedPanel": [
+    {
+      "operator": "V3",
+      "week": 3,
+      "before": {
+        "included": false,
+        "visitor": null,
+        "reason": "not-open",
+        "reasonLabel": "实际停业"
+      },
+      "after": {
+        "included": true,
+        "visitor": 205,
+        "reason": null,
+        "reasonLabel": null
+      }
+    },
+    {
+      "operator": "V3",
+      "week": 4,
+      "before": {
+        "included": false,
+        "visitor": null,
+        "reason": "not-open",
+        "reasonLabel": "实际停业"
+      },
+      "after": {
+        "included": true,
+        "visitor": 198,
+        "reason": null,
+        "reasonLabel": null
+      }
+    },
+    {
+      "operator": "V5",
+      "week": 7,
+      "before": {
+        "included": false,
+        "visitor": null,
+        "reason": "no-report",
+        "reasonLabel": "缺报"
+      },
+      "after": {
+        "included": true,
+        "visitor": 507,
+        "reason": null,
+        "reasonLabel": null
+      }
+    }
+  ],
+  "causal": {
+    "didBefore": -46.75,
+    "didAfter": 210.75,
+    "ciBefore": {
+      "low": -295.43,
+      "high": 173.02
+    },
+    "ciAfter": {
+      "low": 48.72,
+      "high": 376.13
+    },
+    "evidenceGradeBefore": "有限",
+    "evidenceGradeAfter": "较强",
+    "placeboBefore": 193,
+    "placeboAfter": -253.25
+  },
+  "lossBefore": [
+    {
+      "operator": "V2",
+      "portGroup": "处理组",
+      "preMean": 919.75,
+      "postMean": 916,
+      "controlDelta": 89.75,
+      "counterfactualLoss": 93.5,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 3
+    },
+    {
+      "operator": "V3",
+      "portGroup": "处理组",
+      "preMean": null,
+      "postMean": 987.5,
+      "controlDelta": 89.75,
+      "counterfactualLoss": null,
+      "estimable": false,
+      "note": "通车前无可比观测，无法构造反事实",
+      "preWeeks": 0,
+      "postWeeks": 4
+    },
+    {
+      "operator": "V4",
+      "portGroup": "分流污染组",
+      "preMean": 674.75,
+      "postMean": 1001,
+      "controlDelta": 89.75,
+      "counterfactualLoss": -236.5,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 4
+    },
+    {
+      "operator": "V5",
+      "portGroup": "干净对照组",
+      "preMean": 739.75,
+      "postMean": 962.67,
+      "controlDelta": 89.75,
+      "counterfactualLoss": -133.17,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 3
+    },
+    {
+      "operator": "V6",
+      "portGroup": "干净对照组",
+      "preMean": 768.75,
+      "postMean": 770.5,
+      "controlDelta": 89.75,
+      "counterfactualLoss": 88,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 4
+    }
+  ],
+  "lossAfter": [
+    {
+      "operator": "V2",
+      "portGroup": "处理组",
+      "preMean": 919.75,
+      "postMean": 916,
+      "controlDelta": 55.38,
+      "counterfactualLoss": 59.13,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 3
+    },
+    {
+      "operator": "V3",
+      "portGroup": "处理组",
+      "preMean": 201.5,
+      "postMean": 987.5,
+      "controlDelta": 55.38,
+      "counterfactualLoss": -730.62,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 2,
+      "postWeeks": 4
+    },
+    {
+      "operator": "V4",
+      "portGroup": "分流污染组",
+      "preMean": 674.75,
+      "postMean": 1001,
+      "controlDelta": 55.38,
+      "counterfactualLoss": -270.87,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 4
+    },
+    {
+      "operator": "V5",
+      "portGroup": "干净对照组",
+      "preMean": 739.75,
+      "postMean": 848.75,
+      "controlDelta": 55.38,
+      "counterfactualLoss": -53.62,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 4
+    },
+    {
+      "operator": "V6",
+      "portGroup": "干净对照组",
+      "preMean": 768.75,
+      "postMean": 770.5,
+      "controlDelta": 55.38,
+      "counterfactualLoss": 53.63,
+      "estimable": true,
+      "note": "",
+      "preWeeks": 4,
+      "postWeeks": 4
+    }
+  ],
+  "claimChanges": [
+    {
+      "claim": "C2",
+      "operator": "V3",
+      "before": {
+        "approved": 50,
+        "pending": 210,
+        "evidence": "反事实不可估"
+      },
+      "after": {
+        "approved": 50,
+        "pending": 210,
+        "evidence": "与台账反事实损失不符"
+      },
+      "flippedToIneligible": false,
+      "flippedFromIneligible": false
+    },
+    {
+      "claim": "C4",
+      "operator": "V5",
+      "before": {
+        "decision": "建议批准",
+        "approved": 280,
+        "pending": 0,
+        "evidence": "与台账反事实损失不符"
+      },
+      "after": {
+        "decision": "待核资格",
+        "approved": 0,
+        "pending": 0,
+        "evidence": "无正损失证据"
+      },
+      "flippedToIneligible": true,
+      "flippedFromIneligible": false
+    }
+  ],
+  "paidReview": [
+    {
+      "claim": "C1",
+      "operator": "V2",
+      "amount": 300,
+      "ledgerCheckBefore": "与台账反事实损失同向",
+      "ledgerCheckAfter": "与台账反事实损失同向",
+      "needsSeparateReview": true,
+      "reasons": [
+        "补录说明：结算复核：C1 已拨付 300 的登记损失 420 缺少收入侧凭据，TX1 为批发再售不能与游客零售混算，已拨款需另行复核追回或抵扣路径。"
+      ]
+    }
+  ],
+  "fundLedger": {
+    "before": {
+      "period": 2,
+      "total": 650,
+      "occupied": 630,
+      "remaining": 20,
+      "pendingAmount": 210,
+      "paidCount": 1
+    },
+    "after": {
+      "period": 2,
+      "total": 650,
+      "occupied": 350,
+      "remaining": 300,
+      "pendingAmount": 210,
+      "paidCount": 1
+    }
+  }
+}

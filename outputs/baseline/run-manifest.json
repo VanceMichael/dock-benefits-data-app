@@ -1,0 +1,16 @@
+{
+  "runId": "2026-11-23T05-19-29-198Z",
+  "source": "file:///workspace/fixtures/",
+  "files": [
+    "caliber.json",
+    "roster.json",
+    "transactions-canonical.json",
+    "spillover.json",
+    "panel.json",
+    "causal.json",
+    "household-loss.json",
+    "allocation.json",
+    "published.json"
+  ],
+  "caliberGeneratedAt": "2026-11-23T05:19:29.227Z"
+}

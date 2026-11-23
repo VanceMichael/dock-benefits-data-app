@@ -1,0 +1,271 @@
+[
+  {
+    "port": "P1",
+    "treated": true,
+    "window": {
+      "first": 5,
+      "last": 8
+    },
+    "windowRatio": 0.172348,
+    "viaNewBridge": 91,
+    "traffic": 528,
+    "threshold": 0.2,
+    "breachWeeks": [
+      {
+        "week": 5,
+        "ratio": 0.3476190476190476,
+        "viaNewBridge": 73,
+        "traffic": 210,
+        "knownWeek": 5
+      }
+    ],
+    "spilloverEvidence": false,
+    "cleanControl": false,
+    "weekly": [
+      {
+        "week": 5,
+        "ratio": 0.347619,
+        "viaNewBridge": 73,
+        "traffic": 210,
+        "closureDays": 0,
+        "knownWeek": 5
+      },
+      {
+        "week": 6,
+        "ratio": 0.058252,
+        "viaNewBridge": 6,
+        "traffic": 103,
+        "closureDays": 1,
+        "knownWeek": 6
+      },
+      {
+        "week": 7,
+        "ratio": 0.056604,
+        "viaNewBridge": 6,
+        "traffic": 106,
+        "closureDays": 0,
+        "knownWeek": 7
+      },
+      {
+        "week": 8,
+        "ratio": 0.055046,
+        "viaNewBridge": 6,
+        "traffic": 109,
+        "closureDays": 0,
+        "knownWeek": 8
+      }
+    ]
+  },
+  {
+    "port": "P2",
+    "treated": true,
+    "window": {
+      "first": 5,
+      "last": 8
+    },
+    "windowRatio": 0.116667,
+    "viaNewBridge": 56,
+    "traffic": 480,
+    "threshold": 0.2,
+    "breachWeeks": [
+      {
+        "week": 5,
+        "ratio": 0.23809523809523808,
+        "viaNewBridge": 35,
+        "traffic": 147,
+        "knownWeek": 5
+      }
+    ],
+    "spilloverEvidence": false,
+    "cleanControl": false,
+    "weekly": [
+      {
+        "week": 5,
+        "ratio": 0.238095,
+        "viaNewBridge": 35,
+        "traffic": 147,
+        "closureDays": 1,
+        "knownWeek": 5
+      },
+      {
+        "week": 6,
+        "ratio": 0.064815,
+        "viaNewBridge": 7,
+        "traffic": 108,
+        "closureDays": 1,
+        "knownWeek": 6
+      },
+      {
+        "week": 7,
+        "ratio": 0.063063,
+        "viaNewBridge": 7,
+        "traffic": 111,
+        "closureDays": 0,
+        "knownWeek": 7
+      },
+      {
+        "week": 8,
+        "ratio": 0.061404,
+        "viaNewBridge": 7,
+        "traffic": 114,
+        "closureDays": 0,
+        "knownWeek": 8
+      }
+    ]
+  },
+  {
+    "port": "P3",
+    "treated": false,
+    "window": {
+      "first": 5,
+      "last": 8
+    },
+    "windowRatio": 0.172131,
+    "viaNewBridge": 84,
+    "traffic": 488,
+    "threshold": 0.2,
+    "breachWeeks": [
+      {
+        "week": 5,
+        "ratio": 0.42857142857142855,
+        "viaNewBridge": 60,
+        "traffic": 140,
+        "knownWeek": 8
+      }
+    ],
+    "spilloverEvidence": true,
+    "cleanControl": false,
+    "weekly": [
+      {
+        "week": 5,
+        "ratio": 0.428571,
+        "viaNewBridge": 60,
+        "traffic": 140,
+        "closureDays": 0,
+        "knownWeek": 8
+      },
+      {
+        "week": 6,
+        "ratio": 0.070796,
+        "viaNewBridge": 8,
+        "traffic": 113,
+        "closureDays": 1,
+        "knownWeek": 6
+      },
+      {
+        "week": 7,
+        "ratio": 0.068966,
+        "viaNewBridge": 8,
+        "traffic": 116,
+        "closureDays": 0,
+        "knownWeek": 7
+      },
+      {
+        "week": 8,
+        "ratio": 0.067227,
+        "viaNewBridge": 8,
+        "traffic": 119,
+        "closureDays": 0,
+        "knownWeek": 8
+      }
+    ]
+  },
+  {
+    "port": "P4",
+    "treated": false,
+    "window": {
+      "first": 5,
+      "last": 8
+    },
+    "windowRatio": 0.076233,
+    "viaNewBridge": 34,
+    "traffic": 446,
+    "threshold": 0.2,
+    "breachWeeks": [],
+    "spilloverEvidence": false,
+    "cleanControl": true,
+    "weekly": [
+      {
+        "week": 5,
+        "ratio": 0.084337,
+        "viaNewBridge": 7,
+        "traffic": 83,
+        "closureDays": 0,
+        "knownWeek": 5
+      },
+      {
+        "week": 6,
+        "ratio": 0.076271,
+        "viaNewBridge": 9,
+        "traffic": 118,
+        "closureDays": 1,
+        "knownWeek": 6
+      },
+      {
+        "week": 7,
+        "ratio": 0.07438,
+        "viaNewBridge": 9,
+        "traffic": 121,
+        "closureDays": 0,
+        "knownWeek": 7
+      },
+      {
+        "week": 8,
+        "ratio": 0.072581,
+        "viaNewBridge": 9,
+        "traffic": 124,
+        "closureDays": 0,
+        "knownWeek": 8
+      }
+    ]
+  },
+  {
+    "port": "P5",
+    "treated": false,
+    "window": {
+      "first": 5,
+      "last": 8
+    },
+    "windowRatio": 0.075,
+    "viaNewBridge": 36,
+    "traffic": 480,
+    "threshold": 0.2,
+    "breachWeeks": [],
+    "spilloverEvidence": false,
+    "cleanControl": true,
+    "weekly": [
+      {
+        "week": 5,
+        "ratio": 0.058824,
+        "viaNewBridge": 6,
+        "traffic": 102,
+        "closureDays": 2,
+        "knownWeek": 5
+      },
+      {
+        "week": 6,
+        "ratio": 0.081301,
+        "viaNewBridge": 10,
+        "traffic": 123,
+        "closureDays": 1,
+        "knownWeek": 6
+      },
+      {
+        "week": 7,
+        "ratio": 0.079365,
+        "viaNewBridge": 10,
+        "traffic": 126,
+        "closureDays": 0,
+        "knownWeek": 7
+      },
+      {
+        "week": 8,
+        "ratio": 0.077519,
+        "viaNewBridge": 10,
+        "traffic": 129,
+        "closureDays": 0,
+        "knownWeek": 8
+      }
+    ]
+  }
+]
